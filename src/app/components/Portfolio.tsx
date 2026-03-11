@@ -91,7 +91,7 @@ export function Portfolio() {
 
   <div className="relative w-full max-w-[450px] z-10">
     <img 
-      src="/client-map-transparent.png" 
+      src="./client-map-transparent.png" 
       alt="Sri Lanka Map" 
       className="w-full h-auto object-contain mix-blend-multiply"
     />

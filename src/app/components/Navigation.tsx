@@ -64,7 +64,7 @@ export function Navigation() {
             className="flex items-center whitespace-nowrap transition-transform duration-300 hover:scale-105"
           >
             <img 
-              src="/logo.png" 
+              src="./logo.png" 
               alt="Co-Host Ceylon Logo" 
               className="h-16 lg:h-20 xl:h-24 w-auto object-contain" 
             />
