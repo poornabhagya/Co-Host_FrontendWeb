@@ -373,18 +373,11 @@ export function Contact() {
             {/* Brand */}
             <div>
               <div className="mb-4">
-                <span
-                  className="text-[#F5F5DC] tracking-[0.25em] text-xs uppercase block"
-                  style={{ fontFamily: "'Montserrat', sans-serif" }}
-                >
-                  Co-Host
-                </span>
-                <span
-                  className="text-[#F5F5DC] tracking-[0.08em] text-2xl italic"
-                  style={{ fontFamily: "'Playfair Display', serif" }}
-                >
-                  Ceylon
-                </span>
+                <img
+                  src="./logo.png"
+                  alt="Co-Host Ceylon Logo"
+                  className="h-22 w-auto object-contain"
+                />
               </div>
               <p
                 className="text-[#F5F5DC]/40 text-xs leading-relaxed"
