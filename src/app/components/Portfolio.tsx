@@ -217,9 +217,9 @@ export function Portfolio() {
                     {property.description}
                   </p>
                   
-                  <button className="flex items-center gap-2 text-[10px] tracking-[0.2em] uppercase font-sans text-[#023020] hover:text-[#D32F2F] transition-colors w-fit">
-                    <span className="border-b border-[#023020]/30 pb-0.5 font-bold">View Details</span>
-                    <span className="text-sm transform group-hover:translate-x-1 transition-transform">→</span>
+                  <button className="flex items-center gap-2 text-[12px] tracking-[0.2em] uppercase font-sans text-[#023020] hover:text-[#D32F2F] transition-colors w-fit">
+                    <span className="border-b border-[#023020]/30 pb-0.5 text-[#023020] font-bold">View Details</span>
+                    <span className="text-xs transform group-hover:translate-x-1 transition-transform">→</span>
                   </button>
                 </div>
               </div>
