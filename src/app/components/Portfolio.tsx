@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 const portfolioProperties = [
   { id: 1, name: "Luna Laguna", top: "43%", left: "17%", category: "Private Villa", description: "A stunning coastal escape offering absolute privacy and tranquil lagoon views." },
@@ -20,6 +20,9 @@ const portfolioProperties = [
 
 export function Portfolio() {
   const [activeProperty, setActiveProperty] = useState(portfolioProperties[0]);
+  
+  // 🚀 අලුත් Ref එක (Cards ටික තියෙන Container එක අල්ලගන්න)
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const handleNext = () => {
     const currentIndex = portfolioProperties.findIndex(p => p.id === activeProperty.id);
@@ -33,11 +36,17 @@ export function Portfolio() {
     setActiveProperty(portfolioProperties[prevIndex]);
   };
 
-  // 🚀 අලුත් Scroll Function එක
   const scrollToProperties = () => {
     const section = document.getElementById("all-properties");
     if (section) {
       section.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
+  // 🚀 Mobile එකේ අන්තිම Card එකෙන් ආයෙත් මුලට එන්න Function එක
+  const scrollGridToStart = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollTo({ left: 0, behavior: "smooth" });
     }
   };
 
@@ -56,7 +65,6 @@ export function Portfolio() {
             <div className="w-8 h-px bg-[#023020]/30" />
           </div>
         
-        {/* 🚀 වෙනස් කරපු Header Section එක */}
         <div className="mb-10 flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-0 text-center lg:text-left">
           <h2 className="text-[#023020] font-serif text-4xl lg:text-5xl leading-tight">
             Properties We are
@@ -64,13 +72,11 @@ export function Portfolio() {
             <em className="italic">Proud to Partner With</em>
           </h2>
 
-          {/* 🚀 අලුත් Button එක */}
           <button 
             onClick={scrollToProperties}
             className="group flex items-center gap-3 px-6 py-3 border border-[#023020] text-[#023020] hover:bg-[#023020] hover:text-[#F5F5DC] transition-all duration-300 uppercase tracking-widest text-[10px] font-bold rounded-sm shadow-sm"
           >
             Explore All Properties
-            
           </button>
         </div>
 
@@ -90,10 +96,9 @@ export function Portfolio() {
             </p>
         </div>
 
-        {/* Existing Map and Preview Container */}
         <div className="flex flex-col lg:flex-row h-auto lg:h-[700px] gap-8 lg:gap-12 relative">
           
-          {/* Left Side: Client's Image Map with Hotspots */}
+          {/* Left Side: Client's Image Map */}
           <div className="w-full lg:w-1/2 relative p-6 lg:p-10 flex items-center justify-center min-h-[500px]">
             <div 
               className="absolute inset-0 opacity-[0.30] pointer-events-none" 
@@ -186,15 +191,26 @@ export function Portfolio() {
           </div>
         </div>
 
-        {/* 🚀 NEW SECTION: Explore All Properties (Grid/Slider) */}
-        {/* 💡 මෙතන id="all-properties" දැම්මා, scroll-mt-24 දැම්මේ උඩින් ටිකක් ඉඩ තියලා නවතින්න */}
+        {/* 🚀 NEW SECTION: Explore All Properties */}
         <div id="all-properties" className="mt-28 scroll-mt-24">
-          <div className="flex items-center gap-4 mb-10">
+          <div className="flex items-center gap-4 mb-4 lg:mb-10">
             <h3 className="text-[#023020] font-serif text-3xl">Explore All Properties</h3>
             <div className="h-px bg-[#023020]/20 flex-grow max-w-xs" />
           </div>
 
-          <div className="flex lg:grid lg:grid-cols-3 xl:grid-cols-4 gap-6 overflow-x-auto snap-x snap-mandatory pb-8 lg:pb-0" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+          {/* 🚀 Mobile Swipe Indicator */}
+          <div className="flex justify-end lg:hidden mb-4 pr-2">
+            <span className="text-[10px] text-[#023020]/60 uppercase tracking-[0.2em] flex items-center gap-2 animate-pulse font-bold">
+              Swipe for more
+              <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+            </span>
+          </div>
+
+          <div 
+            ref={scrollContainerRef}
+            className="flex lg:grid lg:grid-cols-3 xl:grid-cols-4 gap-6 overflow-x-auto snap-x snap-mandatory pb-8 lg:pb-0" 
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
             
             {portfolioProperties.map((property) => (
               <div 
@@ -224,6 +240,22 @@ export function Portfolio() {
                 </div>
               </div>
             ))}
+
+            {/* 🚀 Back to Start Card (Mobile Only) */}
+            <div 
+              onClick={scrollGridToStart}
+              className="min-w-[85vw] sm:min-w-[320px] lg:hidden snap-center bg-white/50 rounded-sm flex flex-col items-center justify-center border border-[#023020]/10 group cursor-pointer hover:bg-white transition-colors duration-300 py-20"
+            >
+              <div className="w-14 h-14 rounded-full border border-[#023020]/30 flex items-center justify-center text-[#023020] group-hover:-rotate-180 transition-transform duration-700 mb-4 bg-white shadow-sm">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+              </div>
+              <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-[#023020]">
+                Back to Start
+              </span>
+            </div>
+
           </div>
         </div>
 
