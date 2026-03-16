@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
 
-// Client ගේ ඇත්ත Map එකේ රතු Pins තියෙන තැන් වලට හරියන්නම මම Top/Left අගයන් හැදුවා
 const portfolioProperties = [
   { id: 1, name: "Luna Laguna", top: "43%", left: "17%", category: "Private Villa", description: "A stunning coastal escape offering absolute privacy and tranquil lagoon views." },
   { id: 2, name: "Lakeside Retreat Malsiripura", top: "57%", left: "41%", category: "Boutique Hotel", description: "Nestled by a serene lake, offering a perfect blend of nature and luxury." },
@@ -22,18 +21,24 @@ const portfolioProperties = [
 export function Portfolio() {
   const [activeProperty, setActiveProperty] = useState(portfolioProperties[0]);
 
-  // ඉස්සරහට යන්න (Next)
   const handleNext = () => {
     const currentIndex = portfolioProperties.findIndex(p => p.id === activeProperty.id);
     const nextIndex = (currentIndex + 1) % portfolioProperties.length;
     setActiveProperty(portfolioProperties[nextIndex]);
   };
 
-  // පස්සට යන්න (Prev)
   const handlePrev = () => {
     const currentIndex = portfolioProperties.findIndex(p => p.id === activeProperty.id);
     const prevIndex = (currentIndex - 1 + portfolioProperties.length) % portfolioProperties.length;
     setActiveProperty(portfolioProperties[prevIndex]);
+  };
+
+  // 🚀 අලුත් Scroll Function එක
+  const scrollToProperties = () => {
+    const section = document.getElementById("all-properties");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   };
 
   return (
@@ -51,13 +56,22 @@ export function Portfolio() {
             <div className="w-8 h-px bg-[#023020]/30" />
           </div>
         
-        {/* Header Section */}
-        <div className="mb-16 text-center lg:text-left">
+        {/* 🚀 වෙනස් කරපු Header Section එක */}
+        <div className="mb-10 flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-0 text-center lg:text-left">
           <h2 className="text-[#023020] font-serif text-4xl lg:text-5xl leading-tight">
             Properties We are
             <br />
             <em className="italic">Proud to Partner With</em>
           </h2>
+
+          {/* 🚀 අලුත් Button එක */}
+          <button 
+            onClick={scrollToProperties}
+            className="group flex items-center gap-3 px-6 py-3 border border-[#023020] text-[#023020] hover:bg-[#023020] hover:text-[#F5F5DC] transition-all duration-300 uppercase tracking-widest text-[10px] font-bold rounded-sm shadow-sm"
+          >
+            Explore All Properties
+            
+          </button>
         </div>
 
         <div className="flex items-end mb-16">
@@ -74,7 +88,7 @@ export function Portfolio() {
               selected for its architectural character, location, and guest
               experience potential.
             </p>
-          </div>
+        </div>
 
         {/* Existing Map and Preview Container */}
         <div className="flex flex-col lg:flex-row h-auto lg:h-[700px] gap-8 lg:gap-12 relative">
@@ -92,7 +106,6 @@ export function Portfolio() {
                 className="w-full h-auto object-contain mix-blend-multiply"
               />
 
-              {/* Invisible Clickable Hotspots */}
               <div className="absolute inset-0 w-full h-full">
                 {portfolioProperties.map((property) => {
                   const isActive = activeProperty.id === property.id;
@@ -107,14 +120,11 @@ export function Portfolio() {
                       }}
                       onClick={() => setActiveProperty(property)}
                     >
-                      {/* Interactive Target Area */}
                       <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 group
                         ${isActive ? "bg-[#023020]/20 border-2 border-[#023020] scale-110" : "bg-transparent hover:bg-white/40 hover:scale-125 border-2 border-transparent hover:border-[#D32F2F]/50"}
                       `}>
                         {isActive && <div className="w-2 h-2 rounded-full bg-[#023020] animate-ping" />}
                       </div>
-
-                      {/* Property Name */}
                       <span className={`absolute top-full mt-1 font-sans font-semibold text-[10px] uppercase tracking-wider whitespace-nowrap transition-all duration-300 bg-[#F5F5DC]/90 px-2 py-1 rounded shadow-sm border border-[#023020]/10
                           ${isActive ? "text-[#023020] opacity-100 z-20" : "text-[#333] opacity-0 hover:opacity-100"}`}
                       >
@@ -129,7 +139,6 @@ export function Portfolio() {
 
           {/* Right Side: Property Details Card */}
           <div className="w-full lg:w-1/2 flex flex-col bg-white relative rounded-sm shadow-lg overflow-hidden border border-[#023020]/10">
-            {/* Navigation Arrows */}
             <div className="absolute top-[50%] left-0 right-0 flex justify-between px-4 z-30 pointer-events-none -translate-y-1/2 lg:translate-y-0 lg:top-1/4">
               <button 
                 onClick={handlePrev}
@@ -178,14 +187,13 @@ export function Portfolio() {
         </div>
 
         {/* 🚀 NEW SECTION: Explore All Properties (Grid/Slider) */}
-        <div className="mt-28">
+        {/* 💡 මෙතන id="all-properties" දැම්මා, scroll-mt-24 දැම්මේ උඩින් ටිකක් ඉඩ තියලා නවතින්න */}
+        <div id="all-properties" className="mt-28 scroll-mt-24">
           <div className="flex items-center gap-4 mb-10">
             <h3 className="text-[#023020] font-serif text-3xl">Explore All Properties</h3>
             <div className="h-px bg-[#023020]/20 flex-grow max-w-xs" />
           </div>
 
-          {/* Container: Horizontal Scroll on Mobile, Grid on Desktop */}
-          {/* hide-scrollbar class එක පාවිච්චි කරලා scrollbar එක හැංගුවා */}
           <div className="flex lg:grid lg:grid-cols-3 xl:grid-cols-4 gap-6 overflow-x-auto snap-x snap-mandatory pb-8 lg:pb-0" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
             
             {portfolioProperties.map((property) => (
@@ -193,13 +201,11 @@ export function Portfolio() {
                 key={property.id} 
                 className="min-w-[85vw] sm:min-w-[320px] lg:min-w-0 snap-center bg-white rounded-sm shadow-md overflow-hidden flex flex-col border border-[#023020]/10 group cursor-pointer hover:shadow-xl transition-shadow duration-300"
               >
-                {/* Card Image Placeholder */}
                 <div className="h-56 bg-gray-200 relative overflow-hidden flex items-center justify-center">
                   <div className="absolute inset-0 bg-[#023020]/5 group-hover:scale-105 transition-transform duration-700" />
                   <svg className="w-8 h-8 text-[#023020]/30 z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
                 </div>
 
-                {/* Card Content */}
                 <div className="p-6 flex flex-col flex-grow">
                   <span className="text-[#023020]/60 text-[9px] tracking-[0.2em] uppercase font-sans mb-2">
                     {property.category}
