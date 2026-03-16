@@ -76,65 +76,59 @@ export function Portfolio() {
             </p>
           </div>
 
-        {/* 💡 වෙනස් කරපු තැන: Main Container එකෙන් bg එකයි shadow එකයි අයින් කරලා gap එකක් (gap-8 lg:gap-12) දැම්මා */}
+        {/* Existing Map and Preview Container */}
         <div className="flex flex-col lg:flex-row h-auto lg:h-[700px] gap-8 lg:gap-12 relative">
           
           {/* Left Side: Client's Image Map with Hotspots */}
-{/* 💡 කොටුව (Box) පේන එක නැති කරන්න shadow, border, bg අයින් කළා */}
-<div className="w-full lg:w-1/2 relative p-6 lg:p-10 flex items-center justify-center min-h-[500px]">
-  
-  {/* 🌟 Topographic Pattern (මේක සම්පූර්ණ section එකටම ලාවට පේන්න තියෙයි) */}
-  <div 
-    className="absolute inset-0 opacity-[0.30] pointer-events-none" 
-    style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/topography.png')" }}
-  />
+          <div className="w-full lg:w-1/2 relative p-6 lg:p-10 flex items-center justify-center min-h-[500px]">
+            <div 
+              className="absolute inset-0 opacity-[0.30] pointer-events-none" 
+              style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/topography.png')" }}
+            />
+            <div className="relative w-full max-w-[450px] z-10">
+              <img 
+                src="./client-map-transparent.png" 
+                alt="Sri Lanka Map" 
+                className="w-full h-auto object-contain mix-blend-multiply"
+              />
 
-  <div className="relative w-full max-w-[450px] z-10">
-    <img 
-      src="./client-map-transparent.png" 
-      alt="Sri Lanka Map" 
-      className="w-full h-auto object-contain mix-blend-multiply"
-    />
+              {/* Invisible Clickable Hotspots */}
+              <div className="absolute inset-0 w-full h-full">
+                {portfolioProperties.map((property) => {
+                  const isActive = activeProperty.id === property.id;
+                  return (
+                    <div
+                      key={property.id}
+                      className="absolute cursor-pointer flex flex-col items-center justify-center"
+                      style={{ 
+                        top: property.top, 
+                        left: property.left, 
+                        transform: 'translate(-50%, -100%)' 
+                      }}
+                      onClick={() => setActiveProperty(property)}
+                    >
+                      {/* Interactive Target Area */}
+                      <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 group
+                        ${isActive ? "bg-[#023020]/20 border-2 border-[#023020] scale-110" : "bg-transparent hover:bg-white/40 hover:scale-125 border-2 border-transparent hover:border-[#D32F2F]/50"}
+                      `}>
+                        {isActive && <div className="w-2 h-2 rounded-full bg-[#023020] animate-ping" />}
+                      </div>
 
-    {/* Invisible Clickable Hotspots */}
-    <div className="absolute inset-0 w-full h-full">
-      {portfolioProperties.map((property) => {
-        const isActive = activeProperty.id === property.id;
-        return (
-          <div
-            key={property.id}
-            className="absolute cursor-pointer flex flex-col items-center justify-center"
-            style={{ 
-              top: property.top, 
-              left: property.left, 
-              transform: 'translate(-50%, -100%)' 
-            }}
-            onClick={() => setActiveProperty(property)}
-          >
-            {/* Interactive Target Area */}
-            <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 group
-              ${isActive ? "bg-[#023020]/20 border-2 border-[#023020] scale-110" : "bg-transparent hover:bg-white/40 hover:scale-125 border-2 border-transparent hover:border-[#D32F2F]/50"}
-            `}>
-              {isActive && <div className="w-2 h-2 rounded-full bg-[#023020] animate-ping" />}
+                      {/* Property Name */}
+                      <span className={`absolute top-full mt-1 font-sans font-semibold text-[10px] uppercase tracking-wider whitespace-nowrap transition-all duration-300 bg-[#F5F5DC]/90 px-2 py-1 rounded shadow-sm border border-[#023020]/10
+                          ${isActive ? "text-[#023020] opacity-100 z-20" : "text-[#333] opacity-0 hover:opacity-100"}`}
+                      >
+                        {property.name}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
-
-            {/* Property Name */}
-            <span className={`absolute top-full mt-1 font-sans font-semibold text-[10px] uppercase tracking-wider whitespace-nowrap transition-all duration-300 bg-[#F5F5DC]/90 px-2 py-1 rounded shadow-sm border border-[#023020]/10
-                ${isActive ? "text-[#023020] opacity-100 z-20" : "text-[#333] opacity-0 hover:opacity-100"}`}
-            >
-              {property.name}
-            </span>
           </div>
-        );
-      })}
-    </div>
-  </div>
-</div>
 
           {/* Right Side: Property Details Card */}
-          {/* 💡 මෙතනටත් අලුතින් rounded-sm, shadow-lg, border එකතු කළා */}
           <div className="w-full lg:w-1/2 flex flex-col bg-white relative rounded-sm shadow-lg overflow-hidden border border-[#023020]/10">
-            
             {/* Navigation Arrows */}
             <div className="absolute top-[50%] left-0 right-0 flex justify-between px-4 z-30 pointer-events-none -translate-y-1/2 lg:translate-y-0 lg:top-1/4">
               <button 
@@ -180,6 +174,50 @@ export function Portfolio() {
                 <span className="text-lg transform group-hover:translate-x-2 transition-transform">→</span>
               </button>
             </div>
+          </div>
+        </div>
+
+        {/* 🚀 NEW SECTION: Explore All Properties (Grid/Slider) */}
+        <div className="mt-28">
+          <div className="flex items-center gap-4 mb-10">
+            <h3 className="text-[#023020] font-serif text-3xl">Explore All Properties</h3>
+            <div className="h-px bg-[#023020]/20 flex-grow max-w-xs" />
+          </div>
+
+          {/* Container: Horizontal Scroll on Mobile, Grid on Desktop */}
+          {/* hide-scrollbar class එක පාවිච්චි කරලා scrollbar එක හැංගුවා */}
+          <div className="flex lg:grid lg:grid-cols-3 xl:grid-cols-4 gap-6 overflow-x-auto snap-x snap-mandatory pb-8 lg:pb-0" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+            
+            {portfolioProperties.map((property) => (
+              <div 
+                key={property.id} 
+                className="min-w-[85vw] sm:min-w-[320px] lg:min-w-0 snap-center bg-white rounded-sm shadow-md overflow-hidden flex flex-col border border-[#023020]/10 group cursor-pointer hover:shadow-xl transition-shadow duration-300"
+              >
+                {/* Card Image Placeholder */}
+                <div className="h-56 bg-gray-200 relative overflow-hidden flex items-center justify-center">
+                  <div className="absolute inset-0 bg-[#023020]/5 group-hover:scale-105 transition-transform duration-700" />
+                  <svg className="w-8 h-8 text-[#023020]/30 z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                </div>
+
+                {/* Card Content */}
+                <div className="p-6 flex flex-col flex-grow">
+                  <span className="text-[#023020]/60 text-[9px] tracking-[0.2em] uppercase font-sans mb-2">
+                    {property.category}
+                  </span>
+                  <h4 className="font-serif text-xl text-[#023020] mb-3">
+                    {property.name}
+                  </h4>
+                  <p className="font-sans text-[#333]/70 text-xs leading-relaxed mb-6 flex-grow">
+                    {property.description}
+                  </p>
+                  
+                  <button className="flex items-center gap-2 text-[10px] tracking-[0.2em] uppercase font-sans text-[#023020] hover:text-[#D32F2F] transition-colors w-fit">
+                    <span className="border-b border-[#023020]/30 pb-0.5 font-bold">View Details</span>
+                    <span className="text-sm transform group-hover:translate-x-1 transition-transform">→</span>
+                  </button>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
