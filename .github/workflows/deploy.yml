@@ -1,0 +1,54 @@
+name: Deploy React to GitHub Pages
+
+# 1. Trigger එක: main branch එකට push කරාම පටන් ගන්නවා
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch: # අපිට ඕනෙ නම් අතින් (manually) රන් කරන්නත් පුළුවන්
+
+# 2. Permissions: GitHub Pages වලට කෝඩ් එක ලියන්න අවසර
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  # 3. Build Stage (CI)
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build the project
+        run: npm run build
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist # Vite වලින් build වෙන ෆෝල්ඩර් එක
+
+  # 4. Deploy Stage (CD)
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build # Build එක පාස් වුණොත් විතරයි මේක රන් වෙන්නේ
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
