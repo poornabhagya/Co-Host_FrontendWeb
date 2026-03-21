@@ -1,4 +1,4 @@
-[![pages-build-deployment](https://github.com/poornabhagya/Co-Host_FrontendWeb/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/poornabhagya/Co-Host_FrontendWeb/actions/workflows/pages/pages-build-deployment)
+[![Deploy React to GitHub Pages](https://github.com/poornabhagya/Co-Host_FrontendWeb/actions/workflows/deploy.yml/badge.svg)](https://github.com/poornabhagya/Co-Host_FrontendWeb/actions/workflows/deploy.yml)
 
 # Co-Host Ceylon - Premium Web Platform
 
