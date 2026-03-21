@@ -46,10 +46,11 @@ export function Contact() {
 
     setLoading(true);
 
-    // Vite වලදී ගන්නේ මෙහෙමයි:
-    const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID as string;
-    const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string;
-    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string;
+    // ⛔ IDs ටික කෙලින්ම මෙතන ලියන්න (Hardcode)
+    // මේ IDs ටික EmailJS Dashboard එකෙන් අරන් මෙතනට පේස්ට් කරන්න
+    const serviceID = "service_qxc03w7"; 
+    const templateID = "template_7kvksyo"; // උදා: template_xxxxxxx
+    const publicKey = "t6GvIYifrPC7L7ohR";   // උදා: xxxxxxxxxxxxxxx
 
     emailjs
       .sendForm(serviceID, templateID, formRef.current, publicKey)
@@ -61,7 +62,7 @@ export function Contact() {
         },
         (error) => {
           setLoading(false);
-          alert("Error sending email.");
+          alert("Error sending email. Please try again.");
           console.error("FAILED...", error);
         }
       );
