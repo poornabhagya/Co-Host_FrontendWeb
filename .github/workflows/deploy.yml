@@ -3,13 +3,11 @@ name: Deploy React to GitHub Pages
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
-# 1. Trigger එක: main branch එකට push කරාම පටන් ගන්නවා
 on:
   push:
     branches: ["main"]
-  workflow_dispatch: # අපිට ඕනෙ නම් අතින් (manually) රන් කරන්නත් පුළුවන්
+  workflow_dispatch:
 
-# 2. Permissions: GitHub Pages වලට කෝඩ් එක ලියන්න අවසර
 permissions:
   contents: read
   pages: write
@@ -20,7 +18,6 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  # 3. Build Stage (CI)
   build:
     runs-on: ubuntu-latest
     steps:
@@ -37,6 +34,7 @@ jobs:
         run: npm install
 
       - name: Build the project
+        # මෙතන තමයි වැදගත්ම කොටස. Vite වලට Secrets ටික මෙහෙමයි දෙන්න ඕනේ.
         run: npm run build
         env:
           VITE_EMAILJS_SERVICE_ID: ${{ secrets.VITE_EMAILJS_SERVICE_ID }}
@@ -46,15 +44,14 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist # Vite වලින් build වෙන ෆෝල්ඩර් එක
+          path: ./dist
 
-  # 4. Deploy Stage (CD)
   deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    needs: build # Build එක පාස් වුණොත් විතරයි මේක රන් වෙන්නේ
+    needs: build
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
