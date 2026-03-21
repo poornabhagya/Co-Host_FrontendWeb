@@ -1,23 +1,25 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { MapPin, Mail, Phone, Send, CheckCircle } from "lucide-react";
+import emailjs from "@emailjs/browser"; // EmailJS Import කළා
 
 const CONTACT_BG =
   "https://images.unsplash.com/photo-1760942992111-a65227a3b266?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBib3V0aXF1ZSUyMGhvdGVsJTIwdHJvcGljYWwlMjBnYXJkZW4lMjBwb29sfGVufDF8fHx8MTc3MjY0MDE2OHww&ixlib=rb-4.1.0&q=80&w=1920";
 
+// EmailJS Template එකට ගැලපෙන්න Variables වෙනස් කළා
 type FormData = {
-  name: string;
-  email: string;
-  phone: string;
-  propertyType: string;
+  from_name: string;
+  reply_to: string;
+  phone_number: string;
+  property_type: string;
   location: string;
   message: string;
 };
 
 const initialForm: FormData = {
-  name: "",
-  email: "",
-  phone: "",
-  propertyType: "",
+  from_name: "",
+  reply_to: "",
+  phone_number: "",
+  property_type: "",
   location: "",
   message: "",
 };
@@ -26,6 +28,9 @@ export function Contact() {
   const [form, setForm] = useState<FormData>(initialForm);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  
+  // Form එක අල්ලගන්න Ref එක
+  const formRef = useRef<HTMLFormElement>(null);
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -37,11 +42,29 @@ export function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!formRef.current) return;
+
     setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      setSubmitted(true);
-    }, 1500);
+
+    // Vite වලදී ගන්නේ මෙහෙමයි:
+    const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID as string;
+    const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string;
+
+    emailjs
+      .sendForm(serviceID, templateID, formRef.current, publicKey)
+      .then(
+        () => {
+          setLoading(false);
+          setSubmitted(true);
+          setForm(initialForm);
+        },
+        (error) => {
+          setLoading(false);
+          alert("Error sending email.");
+          console.error("FAILED...", error);
+        }
+      );
   };
 
   return (
@@ -220,7 +243,7 @@ export function Contact() {
                   </p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
+                <form ref={formRef} onSubmit={handleSubmit} className="space-y-5">
                   <div className="grid sm:grid-cols-2 gap-5">
                     <div>
                       <label
@@ -231,9 +254,9 @@ export function Contact() {
                       </label>
                       <input
                         type="text"
-                        name="name"
+                        name="from_name"
                         required
-                        value={form.name}
+                        value={form.from_name}
                         onChange={handleChange}
                         className="w-full bg-transparent border-b border-[#023020]/20 focus:border-[#023020] outline-none py-2 text-[#023020] text-sm transition-colors duration-300"
                         style={{ fontFamily: "'Montserrat', sans-serif" }}
@@ -249,9 +272,9 @@ export function Contact() {
                       </label>
                       <input
                         type="email"
-                        name="email"
+                        name="reply_to"
                         required
-                        value={form.email}
+                        value={form.reply_to}
                         onChange={handleChange}
                         className="w-full bg-transparent border-b border-[#023020]/20 focus:border-[#023020] outline-none py-2 text-[#023020] text-sm transition-colors duration-300"
                         style={{ fontFamily: "'Montserrat', sans-serif" }}
@@ -270,8 +293,8 @@ export function Contact() {
                       </label>
                       <input
                         type="tel"
-                        name="phone"
-                        value={form.phone}
+                        name="phone_number"
+                        value={form.phone_number}
                         onChange={handleChange}
                         className="w-full bg-transparent border-b border-[#023020]/20 focus:border-[#023020] outline-none py-2 text-[#023020] text-sm transition-colors duration-300"
                         style={{ fontFamily: "'Montserrat', sans-serif" }}
@@ -286,8 +309,8 @@ export function Contact() {
                         Property Type
                       </label>
                       <select
-                        name="propertyType"
-                        value={form.propertyType}
+                        name="property_type"
+                        value={form.property_type}
                         onChange={handleChange}
                         className="w-full bg-transparent border-b border-[#023020]/20 focus:border-[#023020] outline-none py-2 text-[#023020] text-sm transition-colors duration-300"
                         style={{ fontFamily: "'Montserrat', sans-serif" }}
