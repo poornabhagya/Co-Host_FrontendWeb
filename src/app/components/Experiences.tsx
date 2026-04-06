@@ -240,9 +240,9 @@ export function Experiences() {
                 lineHeight: 1.25,
               }}
             >
-              Discover Sri Lanka
+              experiences
               <br />
-              <em className="italic">Through Its People</em>
+              
             </h2>
           </div>
           <div className="flex items-end">
