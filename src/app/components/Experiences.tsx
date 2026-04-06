@@ -240,7 +240,7 @@ export function Experiences() {
                 lineHeight: 1.25,
               }}
             >
-              experiences
+              Experiences
               <br />
               
             </h2>
