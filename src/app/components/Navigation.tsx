@@ -9,7 +9,7 @@ const navItems = [
   { label: "Real Estate & Development", href: "#real-estate" },
   { label: "Portfolio", href: "#portfolio" },
   { label: "Experiences", href: "#experiences" },
-  { label: "Insights", href: "#insights" },
+  { label: "Other", href: "#insights" },
   { label: "Partnership Process", href: "#partnership" },
 ];
 

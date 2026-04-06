@@ -186,34 +186,37 @@ export function Services() {
         </div>
 
         {/* 6-Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-[#023020]/10">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-[#023020]/10 auto-rows-fr">
           {services.map((service) => {
             const Icon = service.icon;
             return (
               <div
                 key={service.title}
-                className="bg-white p-10 group hover:bg-[#023020] transition-all duration-500 cursor-default flex flex-col"
+                className="bg-white p-10 group hover:bg-[#023020] transition-all duration-500 cursor-default flex flex-col border-l border-r border-[#023020]/8 group-hover:border-[#F5F5DC]/10 h-full"
               >
-                {/* Icon */}
+                {/* Header Section - Icon and Title */}
                 <div className="mb-6">
-                  <Icon
-                    size={28}
-                    className="text-[#023020] group-hover:text-[#F5F5DC] transition-colors duration-500"
-                    strokeWidth={1.2}
-                  />
-                </div>
+                  {/* Icon */}
+                  <div className="mb-6">
+                    <Icon
+                      size={28}
+                      className="text-[#023020] group-hover:text-[#F5F5DC] transition-colors duration-500"
+                      strokeWidth={1.2}
+                    />
+                  </div>
 
-                <h3
-                  className="text-[#023020] group-hover:text-[#F5F5DC] mb-3 transition-colors duration-500"
-                  style={{
-                    fontFamily: "'Playfair Display', serif",
-                    fontSize: "1.05rem",
-                    fontWeight: 400,
-                    lineHeight: 1.4,
-                  }}
-                >
-                  {service.title}
-                </h3>
+                  <h3
+                    className="text-[#023020] group-hover:text-[#F5F5DC] mb-3 transition-colors duration-500"
+                    style={{
+                      fontFamily: "'Playfair Display', serif",
+                      fontSize: "1.05rem",
+                      fontWeight: 400,
+                      lineHeight: 1.4,
+                    }}
+                  >
+                    {service.title}
+                  </h3>
+                </div>
 
                 <p
                   className="text-[#333]/60 group-hover:text-[#F5F5DC]/65 mb-5 transition-colors duration-500"
