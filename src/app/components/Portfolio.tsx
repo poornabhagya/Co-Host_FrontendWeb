@@ -76,7 +76,7 @@ export function Portfolio() {
             onClick={scrollToProperties}
             className="group flex items-center gap-3 px-6 py-3 border border-[#023020] text-[#023020] hover:bg-[#023020] hover:text-[#F5F5DC] transition-all duration-300 uppercase tracking-widest text-[10px] font-bold rounded-sm shadow-sm"
           >
-            Explore All Properties
+            Collection
           </button>
         </div>
 
@@ -194,7 +194,7 @@ export function Portfolio() {
         {/* 🚀 NEW SECTION: Explore All Properties */}
         <div id="all-properties" className="mt-28 scroll-mt-24">
           <div className="flex items-center gap-4 mb-4 lg:mb-10">
-            <h3 className="text-[#023020] font-serif text-3xl">Explore All Properties</h3>
+            <h3 className="text-[#023020] font-serif text-3xl">Collection</h3>
             <div className="h-px bg-[#023020]/20 flex-grow max-w-xs" />
           </div>
 

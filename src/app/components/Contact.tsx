@@ -422,7 +422,7 @@ export function Contact() {
                 Navigation
               </p>
               <ul className="space-y-2">
-                {["About", "Services", "Portfolio", "Experiences", "Insights", "Contact"].map(
+                {["About", "Services", "Portfolio", "Experiences", "Other", "Contact"].map(
                   (item) => (
                     <li key={item}>
                       <button
