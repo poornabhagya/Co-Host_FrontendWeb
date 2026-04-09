@@ -9,7 +9,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      // 💡 වෙනස් කරපු තැන: pt-32 සහ pb-20 එකතු කළා
+      
       className="relative min-h-screen flex flex-col items-center justify-center pt-32 pb-20 overflow-hidden"
     >
       {/* Background Image */}
@@ -37,19 +37,9 @@ export function Hero() {
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center text-center px-6 max-w-5xl mx-auto">
         {/* Eyebrow */}
-        <p
-          className="text-[#F5F5DC]/70 text-xs tracking-[0.4em] uppercase mb-8"
-          style={{ fontFamily: "'Montserrat', sans-serif" }}
-        >
-          Luxury Hospitality Growth Partner · Sri Lanka
-        </p>
+        
 
-        {/* Divider */}
-        <div className="flex items-center gap-4 mb-8">
-          <div className="w-16 h-px bg-[#F5F5DC]/40" />
-          <div className="w-1.5 h-1.5 rounded-full bg-[#F5F5DC]/60" />
-          <div className="w-16 h-px bg-[#F5F5DC]/40" />
-        </div>
+        
 
         {/* Headline */}
         <h1
@@ -77,28 +67,13 @@ export function Hero() {
             lineHeight: 2,
           }}
         >
-          Reservations · Revenue · Marketing · Operational Alignment
+          
         </p>
 
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row items-center gap-4">
-          <button
-            onClick={() => handleScroll("#contact")}
-            className="px-10 py-4 text-[#023020] text-xs tracking-[0.2em] uppercase hover:bg-[#F5F5DC]/90 transition-all duration-300"
-            style={{
-              fontFamily: "'Montserrat', sans-serif",
-              background: "#F5F5DC",
-            }}
-          >
-            Schedule Consultation
-          </button>
-          <button
-            onClick={() => handleScroll("#services")}
-            className="px-10 py-4 border border-[#F5F5DC]/50 text-[#F5F5DC] text-xs tracking-[0.2em] uppercase hover:border-[#F5F5DC] transition-all duration-300"
-            style={{ fontFamily: "'Montserrat', sans-serif" }}
-          >
-            Explore Services
-          </button>
+        
+          
         </div>
       </div>
 
