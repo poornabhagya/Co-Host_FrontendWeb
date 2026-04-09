@@ -5,9 +5,9 @@ import { Menu, X } from "lucide-react";
 const navItems = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
+  { label: "Partnership Services", href: "#services" },
   { label: "Real Estate & Development", href: "#real-estate" },
-  { label: "Portfolio", href: "#portfolio" },
+  { label: "Collection", href: "#portfolio" },
   { label: "Experiences", href: "#experiences" },
   { label: "Other", href: "#insights" },
 ];
@@ -86,6 +86,17 @@ export function Navigation() {
 
           {/* CTA + Mobile toggle */}
           <div className="flex items-center gap-4">
+            
+            {/* අලුත් Book Now බොත්තම (Solid Style) */}
+            <button
+              onClick={() => console.log("Book Now clicked - Section pending")} // දැනට සෙක්ෂන් එකක් නැති නිසා නිකන් තිබ්බා
+              className="hidden lg:block px-5 py-2 bg-[#F5F5DC] text-[#023020] text-xs tracking-[0.15em] uppercase hover:bg-white transition-all duration-300 whitespace-nowrap font-medium"
+              style={{ fontFamily: "'Montserrat', sans-serif" }}
+            >
+              Book Now
+            </button>
+
+            {/* පරණ Contact Us බොත්තම (Outline Style) */}
             <button
               onClick={() => handleNavClick("#contact")}
               className="hidden lg:block px-5 py-2 border border-[#F5F5DC]/60 text-[#F5F5DC] text-xs tracking-[0.15em] uppercase hover:bg-[#F5F5DC] hover:text-[#023020] transition-all duration-300 whitespace-nowrap"
@@ -93,6 +104,7 @@ export function Navigation() {
             >
               Contact Us
             </button>
+            
             <button
               className="xl:hidden text-[#F5F5DC] z-[60]" 
               onClick={() => setMobileOpen(!mobileOpen)}
