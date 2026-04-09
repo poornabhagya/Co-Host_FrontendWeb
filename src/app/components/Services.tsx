@@ -9,29 +9,9 @@ import {
 
 const services = [
   {
-    icon: CalendarDays,
-    title: "Reservations & Guest Relations Management",
-    sectionTitle: "1. Reservations & Guest Relations Management",
-    intro:
-      "We manage the entire reservations ecosystem — ensuring seamless bookings, aligned calendars, and elevated guest communication from inquiry to departure.",
-    listLabel: "Services Include:",
-    highlights: [
-      "Full OTA & Channel Manager integration (Airbnb, Booking.com, Agoda, Expedia)",
-      "Inventory control & rate synchronization",
-      "Direct booking engine setup & payment gateway integration",
-      "Personalized reservation handling by fluent, professionally trained staff",
-      "24/7 guest communication & pre-arrival coordination",
-      "Review management & ranking optimization",
-      "Upselling experiences (transfers, dining, excursions)",
-      "Cancellation management & dispute handling",
-    ],
-    tagline:
-      "Our team acts as your remote front office — structured, responsive, and brand-aligned.",
-  },
-  {
     icon: TrendingUp,
     title: "Revenue Maximisation",
-    sectionTitle: "2. Revenue Maximisation",
+    sectionTitle: "1. Revenue Maximisation",
     intro:
       "We manage the entire reservations ecosystem ensuring seamless bookings, aligned calendars, and elevated guest communication from inquiry to departure.",
     listLabel: "Revenue Services:",
@@ -44,12 +24,14 @@ const services = [
       "Budget planning for marketing & operational improvements",
       "Payment gateway monitoring",
     ],
-    tagline: "We focus on long-term yield growth not short-term discounting.",
+    
   },
+  
+  
   {
     icon: Megaphone,
     title: "Brand Positioning",
-    sectionTitle: "3. Brand Positioning",
+    sectionTitle: "2. Brand Positioning",
     intro: "Beyond bookings, we build brands.",
     listLabel: "Marketing Services:",
     highlights: [
@@ -63,58 +45,51 @@ const services = [
       "We position each property as a distinct hospitality identity — not just another listing.",
   },
   {
-    icon: BarChart3,
-    title: "Financial Oversight & Accounts Coordination",
-    sectionTitle: "4. Financial Oversight & Accounts Coordination",
-    intro:
-      "Transparency and structured financial reporting are central to our model.",
-    listLabel: "Financial Management Includes:",
-    highlights: [
-      "Monthly reservations performance reports",
-      "Commission reconciliation",
-      "Revenue breakdown by channel",
-      "Owner payout tracking",
-      "Expense coordination with on-site management",
-      "Budget planning for marketing & operational improvements",
-      "Payment gateway monitoring",
-    ],
-    tagline:
-      "We ensure owners understand performance clearly — in numbers, not assumptions.",
-  },
-  {
     icon: Settings2,
-    title: "Operations Advisory & Systems Implementation",
-    sectionTitle: "5. Operations Advisory & Systems Implementation",
-    intro: "We help properties scale with structure.",
+    title: "Operational Excellence",
+    sectionTitle: "3. Operational Excellence",
+    intro: (
+      <div className="mt-4 text-gray-600">
+        <p className="mb-2">What distinguishes Co-Host Ceylon is not automation, it is precision. Our reservations and guest communications are handled by fluent, trained professionals who understand:</p>
+        <ul className="list-disc pl-5 space-y-1">
+          <li>Cultural nuance</li>
+          <li>Luxury guest expectations</li>
+          <li>Travel behavior</li>
+          <li>Sri Lankan destination knowledge</li>
+        </ul>
+      </div>
+    ),
     listLabel: "Operational Support:",
     highlights: [
       "Channel manager implementation",
       "Booking engine & payment gateway setup",
       "SOP development for on-site staff",
-      "Front office communication protocols",
       "Guest experience refinement",
-      "Staff coordination support",
       "Vendor & partner network introductions",
     ],
     tagline:
       "We create operational clarity so properties run smoothly — even in the owner's absence.",
   },
   {
-    icon: Heart,
-    title: "Personalised Hospitality Model",
-    sectionTitle: "6. Personalised Hospitality Model",
+    icon: CalendarDays,
+    title: "GUEST EXPERIENCE",
+    sectionTitle: "4. GUEST EXPERIENCE",
     intro:
-      "What distinguishes Co-Host Ceylon is not automation — it is precision. Our reservations and guest communications are handled by fluent, trained professionals who understand:",
-    listLabel: "",
+      "We manage the entire reservations ecosystem — ensuring seamless bookings, aligned calendars, and elevated guest communication from inquiry to departure.",
+    listLabel: "Services Include:",
     highlights: [
-      "Cultural nuance",
-      "Luxury guest expectations",
-      "Travel behavior",
-      "Sri Lankan destination knowledge",
+      "Inventory control & rate synchronization",
+      "Direct booking engine setup & payment gateway integration",
+      "Personalized reservation handling by fluent, professionally trained staff",
+      "24/7 guest communication & pre-arrival coordination",
+      "Review management & ranking optimization",
+      "Upselling experiences (transfers, dining, excursions)",
+      "Cancellation management & dispute handling",
     ],
-    tagline:
-      "Every booking is treated individually — not as a transaction, but as a curated stay.",
+    
   },
+  
+  
 ];
 
 export function Services() {
@@ -136,54 +111,14 @@ export function Services() {
               Our Services
             </span>
           </div>
-          <h2
-            className="text-[#023020] mb-6"
-            style={{
-              fontFamily: "'Playfair Display', serif",
-              fontSize: "clamp(1.8rem, 3vw, 2.8rem)",
-              fontWeight: 400,
-              lineHeight: 1.2,
-            }}
-          >
-            Strategic Hospitality Management
-            <br />
-            <em className="italic">for Boutique Properties in Sri Lanka</em>
-          </h2>
+          
         </div>
 
         {/* Intro paragraph */}
-        <div
-          className="max-w-3xl mb-16 p-8 border-l-2 border-[#023020]/20"
-          style={{ background: "rgba(2,48,32,0.03)" }}
-        >
-          <p
-            className="text-[#333]/65 mb-3"
-            style={{
-              fontFamily: "'Montserrat', sans-serif",
-              fontSize: "0.875rem",
-              lineHeight: 1.95,
-            }}
-          >
-            At Co-Host Ceylon, we operate as a dedicated reservations, revenue,
-            and brand management partner for boutique villas and curated
-            hospitality concepts across Sri Lanka.
-          </p>
-          <p
-            className="text-[#333]/65"
-            style={{
-              fontFamily: "'Montserrat', sans-serif",
-              fontSize: "0.875rem",
-              lineHeight: 1.95,
-            }}
-          >
-            Our approach combines structured financial oversight, dynamic
-            revenue strategy, and personalized guest engagement — delivered by
-            professionally trained, fluent, and hospitality-driven staff.
-          </p>
-        </div>
+       
 
-        {/* 6-Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-[#023020]/10 auto-rows-fr">
+        {/* 4-Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-px bg-[#023020]/10 auto-rows-fr">
           {services.map((service) => {
             const Icon = service.icon;
             return (
