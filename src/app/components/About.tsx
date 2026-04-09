@@ -54,18 +54,7 @@ export function About() {
                 Co-Host Ceylon is a boutique hospitality growth partner dedicated
                 exclusively to luxury villas and independent boutique hotels in Sri Lanka.
               </p>
-              <p>
-                We are not a property management company. We operate as a dedicated
-                reservations, revenue, and brand management partner — combining structured
-                financial oversight, dynamic revenue strategy, and personalised guest
-                engagement, delivered by professionally trained, fluent, and
-                hospitality-driven staff.
-              </p>
-              <p>
-                Inspired by the philosophy of Geoffrey Bawa — where architecture dissolves
-                into nature, and luxury is felt rather than announced — we apply this same
-                sensibility to every property we represent.
-              </p>
+              
             </div>
 
             {/* Pillars */}
