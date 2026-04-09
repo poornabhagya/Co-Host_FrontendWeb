@@ -2,9 +2,7 @@ import {
   CalendarDays,
   TrendingUp,
   Megaphone,
-  BarChart3,
   Settings2,
-  Heart,
 } from "lucide-react";
 
 const services = [
@@ -41,8 +39,7 @@ const services = [
       "Travel agent outreach (local & international)",
       "Meta & Google Ads strategy",
     ],
-    tagline:
-      "We position each property as a distinct hospitality identity — not just another listing.",
+    
   },
   {
     icon: Settings2,
@@ -67,8 +64,7 @@ const services = [
       "Guest experience refinement",
       "Vendor & partner network introductions",
     ],
-    tagline:
-      "We create operational clarity so properties run smoothly — even in the owner's absence.",
+    
   },
   {
     icon: CalendarDays,
@@ -202,7 +198,7 @@ export function Services() {
                       lineHeight: 1.7,
                     }}
                   >
-                    {service.tagline}
+                    
                   </p>
                 </div>
               </div>
