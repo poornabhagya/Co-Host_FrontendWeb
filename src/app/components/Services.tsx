@@ -146,7 +146,7 @@ export function Services() {
                   </h3>
                 </div>
 
-                <p
+                <div
                   className="text-[#333]/60 group-hover:text-[#F5F5DC]/65 mb-5 transition-colors duration-500"
                   style={{
                     fontFamily: "'Montserrat', sans-serif",
@@ -155,7 +155,7 @@ export function Services() {
                   }}
                 >
                   {service.intro}
-                </p>
+                </div>
 
                 {service.listLabel && (
                   <p

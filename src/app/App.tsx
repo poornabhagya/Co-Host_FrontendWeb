@@ -2,7 +2,7 @@ import { Navigation } from "./components/Navigation";
 import { Hero } from "./components/Hero";
 import { About } from "./components/About";
 import { Services } from "./components/Services";
-import { RealEstate } from "./components/RealEstate";
+//import { RealEstate } from "./components/RealEstate";
 import { Portfolio } from "./components/Portfolio";
 import { Experiences } from "./components/Experiences";
 import { Insights } from "./components/Insights";
@@ -18,7 +18,7 @@ export default function App() {
       <Hero />
       <About />
       <Services />
-      <RealEstate />
+      {/* <RealEstate /> */} {/* 👈 2. Component එක මෙහෙම කමෙන්ට් කරන්න */}
       <Portfolio />
       
       <Experiences />
