@@ -2,20 +2,20 @@
 import { useState, useRef } from "react";
 
 const portfolioProperties = [
-  { id: 1, name: "Luna Laguna", top: "43%", left: "17%", category: "Private Villa", description: "A stunning coastal escape offering absolute privacy and tranquil lagoon views." },
-  { id: 2, name: "Lakeside Retreat Malsiripura", top: "57%", left: "41%", category: "Boutique Hotel", description: "Nestled by a serene lake, offering a perfect blend of nature and luxury." },
-  { id: 3, name: "Margossa Residence Kandy", top: "65%", left: "46%", category: "Heritage Villa", description: "Colonial charm meets modern tropical luxury in the heart of Kandy." },
-  { id: 4, name: "Casa Heliconia", top: "68%", left: "28%", category: "Garden Estate", description: "An exotic jungle paradise surrounded by lush tropical vegetation." },
-  { id: 5, name: "Villa Morawala", top: "68%", left: "19%", category: "Beach Villa", description: "Breathtaking ocean views and pristine beaches right at your doorstep." },
-  { id: 6, name: "Camellia Residencies", top: "75%", left: "21%", category: "Private Villa", description: "Modern luxury living with exceptional access to local attractions." },
-  { id: 7, name: "SinhaGiri Mansion", top: "73%", left: "50%", category: "Historic Residence", description: "A majestic mansion echoing the grandeur of Sri Lanka's rich history." },
-  { id: 8, name: "Villa Vista Haputale", top: "78%", left: "57%", category: "Mountain Lodge", description: "Perched high in the misty mountains with panoramic views of the island." },
-  { id: 9, name: "Boutique 87", top: "83%", left: "24%", category: "Boutique Hotel", description: "A uniquely designed Bawa-inspired property offering an intimate stay." },
-  { id: 10, name: "Sihina", top: "89%", left: "26%", category: "Private Villa", description: "A dreamlike escape combining contemporary design with tropical ease." },
-  { id: 11, name: "Camellia Ranch", top: "89%", left: "32%", category: "Garden Estate", description: "Expansive green landscapes offering a serene and private retreat." },
-  { id: 12, name: "Treasure Rock", top: "90%", left: "68%", category: "Eco Luxury", description: "Immerse yourself in nature without compromising on high-end comfort." },
-  { id: 13, name: "Liv - Unawatuna", top: "93%", left: "31%", category: "Coastal Villa", description: "Vibrant beachside living in one of Sri Lanka's most iconic bays." },
-  { id: 14, name: "Lotus & Moon", top: "96%", left: "36%", category: "Boutique Hotel", description: "A mystical and calm hideaway perfect for relaxation and rejuvenation." }
+  { id: 1, name: "Luna Laguna", top: "39.25%", left: "27.5%", category: "Private Villa", description: "A stunning coastal escape offering absolute privacy and tranquil lagoon views." },
+  { id: 2, name: "Lakeside Retreat Malsiripura", top: "52.75%", left: "43%", category: "Boutique Hotel", description: "Nestled by a serene lake, offering a perfect blend of nature and luxury." },
+  { id: 3, name: "Margossa Residence Kandy", top: "61.5%", left: "46.75%", category: "Heritage Villa", description: "Colonial charm meets modern tropical luxury in the heart of Kandy." },
+  { id: 4, name: "Casa Heliconia", top: "63.5%", left: "35.5%", category: "Garden Estate", description: "An exotic jungle paradise surrounded by lush tropical vegetation." },
+  { id: 5, name: "Villa Morawala", top: "63%", left: "27.5%", category: "Beach Villa", description: "Breathtaking ocean views and pristine beaches right at your doorstep." },
+  { id: 6, name: "Camellia Residencies", top: "70.75%", left: "29.25%", category: "Private Villa", description: "Modern luxury living with exceptional access to local attractions." },
+  { id: 7, name: "SinhaGiri Mansion", top: "68.5%", left: "51%", category: "Historic Residence", description: "A majestic mansion echoing the grandeur of Sri Lanka's rich history." },
+  { id: 8, name: "Villa Vista Haputale", top: "74.75%", left: "55.5%", category: "Mountain Lodge", description: "Perched high in the misty mountains with panoramic views of the island." },
+  { id: 9, name: "Boutique 87", top: "81.25%", left: "32%", category: "Boutique Hotel", description: "A uniquely designed Bawa-inspired property offering an intimate stay." },
+  { id: 10, name: "Sihina", top: "84%", left: "34.5%", category: "Private Villa", description: "A dreamlike escape combining contemporary design with tropical ease." },
+  { id: 11, name: "Camellia Ranch", top: "88%", left: "38.5%", category: "Garden Estate", description: "Expansive green landscapes offering a serene and private retreat." },
+  { id: 12, name: "Treasure Rock", top: "86.5%", left: "62.75%", category: "Eco Luxury", description: "Immerse yourself in nature without compromising on high-end comfort." },
+  { id: 13, name: "Liv - Unawatuna", top: "91%", left: "37%", category: "Coastal Villa", description: "Vibrant beachside living in one of Sri Lanka's most iconic bays." },
+  { id: 14, name: "Lotus & Moon", top: "92.5%", left: "40.5%", category: "Boutique Hotel", description: "A mystical and calm hideaway perfect for relaxation and rejuvenation." }
 ];
 
 export function Portfolio() {
@@ -99,14 +99,17 @@ export function Portfolio() {
         <div className="flex flex-col lg:flex-row h-auto lg:h-[700px] gap-8 lg:gap-12 relative">
           
           {/* Left Side: Client's Image Map */}
-          <div className="w-full lg:w-1/2 relative p-6 lg:p-10 flex items-center justify-center min-h-[500px]">
+          {/* 🚀 1. p-6 lg:p-10 තිබ්බ එක p-2 lg:p-4 කරලා padding අඩු කරා මැප් එකට ඉඩ එන්න */}
+          <div className="w-full lg:w-1/2 relative p-2 lg:p-4 flex items-center justify-center min-h-[500px]">
             <div 
               className="absolute inset-0 opacity-[0.30] pointer-events-none" 
               style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/topography.png')" }}
             />
-            <div className="relative w-full max-w-[450px] z-10">
+            
+            {/* 🚀 2. max-w-[450px] එක max-w-[650px] කරලා lg:scale-110 දැම්මා තවත් ලොකු වෙලා පේන්න */}
+            <div className="relative w-full max-w-[1200px] scale-125 lg:scale-120 z-10 transition-transform duration-500 origin-center overflow-hidden">
               <img 
-                src="./client-map-transparent.png" 
+                src="./sriLankanMap.png" 
                 alt="Sri Lanka Map" 
                 className="w-full h-auto object-contain mix-blend-multiply"
               />
@@ -125,8 +128,9 @@ export function Portfolio() {
                       }}
                       onClick={() => setActiveProperty(property)}
                     >
-                      <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 group
-                        ${isActive ? "bg-[#023020]/20 border-2 border-[#023020] scale-110" : "bg-transparent hover:bg-white/40 hover:scale-125 border-2 border-transparent hover:border-[#D32F2F]/50"}
+                    
+                      <div className={`w-6 h-6 lg:w-8 lg:h-8 rounded-full flex items-center justify-center transition-all duration-300 group
+                        ${isActive ? "bg-[#023020]/20 border-2 border-[#023020] scale-100 lg:scale-110" : "bg-transparent hover:bg-white/40 hover:scale-110 lg:hover:scale-125 border-2 border-transparent hover:border-[#D32F2F]/50"}
                       `}>
                         {isActive && <div className="w-2 h-2 rounded-full bg-[#023020] animate-ping" />}
                       </div>
