@@ -22,8 +22,9 @@ export default function App() {
       <Portfolio />
       
       <Experiences />
-      <Insights />
       <About />
+      <Insights />
+      
       <Contact />
     </div>
   );
