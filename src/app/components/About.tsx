@@ -1,5 +1,5 @@
 const ABOUT_IMAGE =
-  "https://images.unsplash.com/photo-1681034834429-9b2ee549eb06?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxHZW9mZnJleSUyMEJhd2ElMjB0cm9waWNhbCUyMGFyY2hpdGVjdHVyZSUyMGludGVyaW9yfGVufDF8fHx8MTc3MjY0MDE2NXww&ixlib=rb-4.1.0&q=80&w=1080";
+  `${import.meta.env.BASE_URL}webpageImg/about.jpg`;
 
 const pillars = [
   { number: "01", label: "Revenue Maximisation" },
