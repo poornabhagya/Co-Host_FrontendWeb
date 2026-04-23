@@ -4,11 +4,11 @@ import { Menu, X } from "lucide-react";
 
 const navItems = [
   { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
   { label: "Partnership Services", href: "#services" },
   { label: "Collection", href: "#portfolio" },
   { label: "Experiences", href: "#experiences" },
   { label: "Other", href: "#insights" },
+  { label: "About", href: "#about" },
 ];
 
 export function Navigation() {
