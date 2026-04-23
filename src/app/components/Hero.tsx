@@ -1,4 +1,4 @@
-const HERO_IMAGE = "https://images.unsplash.com/photo-1704797390049-1004ea1c866c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjB2aWxsYSUyMHRyb3BpY2FsJTIwaW5maW5pdHklMjBwb29sJTIwU3JpJTIwTGFua2F8ZW58MXx8fHwxNzcyNjQwMTY0fDA&ixlib=rb-4.1.0&q=80&w=1920";
+const HERO_IMAGE = `${import.meta.env.BASE_URL}webpageImg/hero.webp`;
 
 export function Hero() {
   const handleScroll = (href: string) => {
@@ -11,12 +11,8 @@ export function Hero() {
       id="home"
       
       className="relative min-h-screen flex flex-col items-center justify-center pt-32 pb-20 overflow-hidden"
+      style={{ backgroundImage: `url(${HERO_IMAGE})`, backgroundSize: "cover", backgroundPosition: "center" }}
     >
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${HERO_IMAGE})` }}
-      />
 
       {/* Layered overlays for depth */}
       <div
