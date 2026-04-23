@@ -16,13 +16,14 @@ export default function App() {
     >
       <Navigation />
       <Hero />
-      <About />
+      
       <Services />
       {/* <RealEstate /> */} {/* 👈 2. Component එක මෙහෙම කමෙන්ට් කරන්න */}
       <Portfolio />
       
       <Experiences />
       <Insights />
+      <About />
       <Contact />
     </div>
   );
