@@ -7,8 +7,9 @@ const navItems = [
   { label: "Partnership Services", href: "#services" },
   { label: "Collection", href: "#portfolio" },
   { label: "Experiences", href: "#experiences" },
-  { label: "Other", href: "#insights" },
   { label: "About", href: "#about" },
+  { label: "Other", href: "#insights" },
+  
 ];
 
 export function Navigation() {
