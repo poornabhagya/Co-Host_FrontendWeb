@@ -114,13 +114,13 @@ export function Services() {
        
 
         {/* 4-Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-px bg-[#023020]/10 auto-rows-fr">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-[#023020]/10">
           {services.map((service) => {
             const Icon = service.icon;
             return (
               <div
                 key={service.title}
-                className="bg-white p-10 group hover:bg-[#023020] transition-all duration-500 cursor-default flex flex-col border-l border-r border-[#023020]/8 group-hover:border-[#F5F5DC]/10 h-full"
+                className="bg-white p-6 group hover:bg-[#023020] transition-all duration-500 cursor-default flex flex-col border-l border-r border-[#023020]/8 group-hover:border-[#F5F5DC]/10"
               >
                 {/* Header Section - Icon and Title */}
                 <div className="mb-6">
@@ -147,7 +147,7 @@ export function Services() {
                 </div>
 
                 <div
-                  className="text-[#333]/60 group-hover:text-[#F5F5DC]/65 mb-5 transition-colors duration-500"
+                  className="text-[#023020]/60 group-hover:text-[#F5F5DC]/65 mb-5 transition-colors duration-500"
                   style={{
                     fontFamily: "'Montserrat', sans-serif",
                     fontSize: "0.78rem",
