@@ -70,16 +70,7 @@ export function Hero() {
         <div className="relative z-10 flex flex-col sm:flex-row items-center gap-4" />
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10">
-        <span
-          className="text-[#F5F5DC]/50 text-[10px] tracking-[0.3em] uppercase"
-          style={{ fontFamily: "'Montserrat', sans-serif" }}
-        >
-          Scroll
-        </span>
-        <div className="w-px h-10 bg-gradient-to-b from-[#F5F5DC]/50 to-transparent animate-pulse" />
-      </div>
+      
     </section>
   );
 }
