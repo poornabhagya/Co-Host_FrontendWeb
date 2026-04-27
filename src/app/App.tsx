@@ -3,6 +3,7 @@ import { Hero } from "./components/Hero";
 import { About } from "./components/About";
 import { Services } from "./components/Services";
 //import { RealEstate } from "./components/RealEstate";
+import { VideoShowcase } from "./components/VideoShowcase";
 import { Portfolio } from "./components/Portfolio";
 //import { Experiences } from "./components/Experiences";
 import { Insights } from "./components/Insights";
@@ -19,6 +20,7 @@ export default function App() {
       
       <Services />
       {/* <RealEstate /> */} {/* 👈 2. Component එක මෙහෙම කමෙන්ට් කරන්න */}
+      <VideoShowcase />
       <Portfolio />
       
       {/* <Experiences />*/}
