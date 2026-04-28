@@ -3,7 +3,7 @@ import { useState, useRef } from "react";
 
 const portfolioProperties = [
   { id: 1, name: "Luna Laguna", top: "39.25%", left: "27.5%", category: "Private Villa", description: "A stunning coastal escape offering absolute privacy and tranquil lagoon views.", image: "./propertiesCardImgs/lunaLaguna.jpg" },
-  { id: 2, name: "Lakeside Retreat Malsiripura", top: "52.75%", left: "43%", category: "Boutique Hotel", description: "Nestled by a serene lake, offering a perfect blend of nature and luxury.", image: "./propertiesCardImgs/LakesideRetreat.jpg" },
+  { id: 2, name: "Lakeside Retreat Malsiripura", top: "52.75%", left: "43%", category: "Boutique Hotel", description: "Nestled by a serene lake, offering a perfect blend of nature and luxury.", image: "./propertiesCardImgs/lakeside.jpg" },
   { id: 3, name: "Margossa Residence Kandy", top: "61.5%", left: "46.75%", category: "Heritage Villa", description: "Colonial charm meets modern tropical luxury in the heart of Kandy.", image: "./propertiesCardImgs/margossaResidence.jpg" },
   { id: 4, name: "Casa Heliconia", top: "63.5%", left: "35.5%", category: "Garden Estate", description: "An exotic jungle paradise surrounded by lush tropical vegetation.", image: "./propertiesCardImgs/casaHeliconia.jpg" },
   { id: 5, name: "Villa Morawala", top: "63%", left: "27.5%", category: "Beach Villa", description: "Breathtaking ocean views and pristine beaches right at your doorstep.", image: "./propertiesCardImgs/villaMorawala.jpg" },
