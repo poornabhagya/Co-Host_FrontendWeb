@@ -3,12 +3,12 @@ import { useState, useRef } from "react";
 
 const portfolioProperties = [
   { id: 1, name: "Luna Laguna", top: "39.25%", left: "27.5%", category: "Private Villa", description: "A stunning coastal escape offering absolute privacy and tranquil lagoon views.", image: "./propertiesCardImgs/lunaLaguna.jpg" },
-  { id: 2, name: "Lakeside Retreat Malsiripura", top: "52.75%", left: "43%", category: "Boutique Hotel", description: "Nestled by a serene lake, offering a perfect blend of nature and luxury.", image: "./propertiesCardImgs/lakesideRetreat.jpg" },
+  { id: 2, name: "Lakeside Retreat Malsiripura", top: "52.75%", left: "43%", category: "Boutique Hotel", description: "Nestled by a serene lake, offering a perfect blend of nature and luxury.", image: "./propertiesCardImgs/LakesideRetreat.jpg" },
   { id: 3, name: "Margossa Residence Kandy", top: "61.5%", left: "46.75%", category: "Heritage Villa", description: "Colonial charm meets modern tropical luxury in the heart of Kandy.", image: "./propertiesCardImgs/margossaResidence.jpg" },
   { id: 4, name: "Casa Heliconia", top: "63.5%", left: "35.5%", category: "Garden Estate", description: "An exotic jungle paradise surrounded by lush tropical vegetation.", image: "./propertiesCardImgs/casaHeliconia.jpg" },
   { id: 5, name: "Villa Morawala", top: "63%", left: "27.5%", category: "Beach Villa", description: "Breathtaking ocean views and pristine beaches right at your doorstep.", image: "./propertiesCardImgs/villaMorawala.jpg" },
   { id: 6, name: "Camellia Residencies", top: "70.75%", left: "29.25%", category: "Private Villa", description: "Modern luxury living with exceptional access to local attractions.", image: "./propertiesCardImgs/camelliaResidencies.webp" },
-  { id: 7, name: "SinhaGiri Mansion", top: "68.5%", left: "51%", category: "Historic Residence", description: "A majestic mansion echoing the grandeur of Sri Lanka's rich history.", image: "./propertiesCardImgs/sinhagiriMansion.jpg" },
+  { id: 7, name: "SinhaGiri Mansion", top: "68.5%", left: "51%", category: "Historic Residence", description: "A majestic mansion echoing the grandeur of Sri Lanka's rich history.", image: "./propertiesCardImgs/sinhagiri.jpg" },
   { id: 8, name: "Villa Vista Haputale", top: "74.75%", left: "55.5%", category: "Mountain Lodge", description: "Perched high in the misty mountains with panoramic views of the island.", image: "./propertiesCardImgs/villaVista.jpg" },
   { id: 9, name: "Boutique 87", top: "81.25%", left: "32%", category: "Boutique Hotel", description: "A uniquely designed Bawa-inspired property offering an intimate stay.", image: "./propertiesCardImgs/Boutique87.jpg" },
   { id: 10, name: "Sihina", top: "84%", left: "34.5%", category: "Private Villa", description: "A dreamlike escape combining contemporary design with tropical ease.", image: "./propertiesCardImgs/sihina.jpg" },
