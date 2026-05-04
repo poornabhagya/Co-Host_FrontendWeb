@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Navigation } from "./components/Navigation";
 import { Hero } from "./components/Hero";
 import { About } from "./components/About";
@@ -10,6 +11,19 @@ import { Insights } from "./components/Insights";
 import { Contact } from "./components/Contact";
 
 export default function App() {
+  useEffect(() => {
+    // Handle hash-based scrolling
+    const hash = window.location.hash;
+    if (hash) {
+      setTimeout(() => {
+        const element = document.querySelector(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    }
+  }, []);
+
   return (
     <div
       className="min-h-screen"

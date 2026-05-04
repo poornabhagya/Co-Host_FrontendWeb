@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import { useLocation, useNavigate } from "react-router";
 
 const navItems = [
   { label: "Home", href: "#home" },
@@ -15,6 +16,8 @@ const navItems = [
 export function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 60);
@@ -35,8 +38,33 @@ export function Navigation() {
 
   const handleNavClick = (href: string) => {
     setMobileOpen(false);
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    
+    // If on home page, scroll to anchor
+    if (location.pathname === "/") {
+      const el = document.querySelector(href);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    } else {
+      // If on another page, navigate to home with hash
+      navigate("/" + href);
+      
+      // Wait for page to load and then scroll
+      setTimeout(() => {
+        const el = document.querySelector(href);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      }, 200);
+    }
+  };
+
+  const handleLogoClick = () => {
+    setMobileOpen(false);
+    
+    // If already on home page, scroll to top
+    if (location.pathname === "/") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      // Otherwise navigate to home
+      navigate("/");
+    }
   };
 
   return (
@@ -52,7 +80,7 @@ export function Navigation() {
         <div className="max-w-screen-2xl mx-auto px-6 py-4 flex items-center justify-between gap-8 xl:gap-12">
           
           <button
-            onClick={() => handleNavClick("#home")}
+            onClick={handleLogoClick}
             className="flex items-center whitespace-nowrap transition-transform duration-300 hover:scale-105"
           >
             <img 
