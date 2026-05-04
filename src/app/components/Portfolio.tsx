@@ -2,21 +2,21 @@
 import { useState, useRef } from "react";
 
 const portfolioProperties = [
-  { id: 1, name: "Luna Laguna", top: "39.25%", left: "27.5%", category: "Private Villa", description: "A stunning coastal escape offering absolute privacy and tranquil lagoon views.", image: "./propertiesCardImgs/lunaLaguna.jpg" },
-  { id: 2, name: "Lakeside Retreat Malsiripura", top: "52.75%", left: "43%", category: "Boutique Hotel", description: "Nestled by a serene lake, offering a perfect blend of nature and luxury.", image: "./propertiesCardImgs/lakeside.jpg" },
-  { id: 3, name: "Margossa Residence Kandy", top: "61.5%", left: "46.75%", category: "Heritage Villa", description: "Colonial charm meets modern tropical luxury in the heart of Kandy.", image: "./propertiesCardImgs/margossaResidence.jpg" },
-  { id: 4, name: "Casa Heliconia", top: "63.5%", left: "35.5%", category: "Garden Estate", description: "An exotic jungle paradise surrounded by lush tropical vegetation.", image: "./propertiesCardImgs/casaHeliconia.jpg" },
-  { id: 5, name: "Villa Morawala", top: "63%", left: "27.5%", category: "Beach Villa", description: "Breathtaking ocean views and pristine beaches right at your doorstep.", image: "./propertiesCardImgs/villaMorawala.jpg" },
-  { id: 6, name: "Camellia Residencies", top: "70.75%", left: "29.25%", category: "Private Villa", description: "Modern luxury living with exceptional access to local attractions.", image: "./propertiesCardImgs/camelliaResidencies.webp" },
-  { id: 7, name: "SinhaGiri Mansion", top: "68.5%", left: "51%", category: "Historic Residence", description: "A majestic mansion echoing the grandeur of Sri Lanka's rich history.", image: "./propertiesCardImgs/sinhagiri.jpg" },
-  { id: 8, name: "Villa Vista Haputale", top: "74.75%", left: "55.5%", category: "Mountain Lodge", description: "Perched high in the misty mountains with panoramic views of the island.", image: "./propertiesCardImgs/villaVista.jpg" },
-  { id: 9, name: "Boutique 87", top: "81.25%", left: "32%", category: "Boutique Hotel", description: "A uniquely designed Bawa-inspired property offering an intimate stay.", image: "./propertiesCardImgs/Boutique87.jpg" },
-  { id: 10, name: "Sihina", top: "84%", left: "34.5%", category: "Private Villa", description: "A dreamlike escape combining contemporary design with tropical ease.", image: "./propertiesCardImgs/sihina.jpg" },
-  { id: 11, name: "Camellia Ranch", top: "88%", left: "38.5%", category: "Garden Estate", description: "Expansive green landscapes offering a serene and private retreat.", image: "./propertiesCardImgs/camelliaRanch.jpg" },
-  { id: 12, name: "Treasure Rock", top: "86.5%", left: "62.75%", category: "Eco Luxury", description: "Immerse yourself in nature without compromising on high-end comfort.", image: "./propertiesCardImgs/treasureRock.jpg" },
-  { id: 13, name: "Liv - Unawatuna", top: "91%", left: "37%", category: "Coastal Villa", description: "Vibrant beachside living in one of Sri Lanka's most iconic bays.", image: "./propertiesCardImgs/liv.jpg" },
-  { id: 14, name: "Lotus & Moon", top: "92.5%", left: "40.5%", category: "Boutique Hotel", description: "A mystical and calm hideaway perfect for relaxation and rejuvenation.", image: "./propertiesCardImgs/lotus.jpeg" },
-  { id: 15, name: "Heuvel Villa Kandy", top: "63%", left: "50.5%", category: "Boutique Hotel", description: "A mystical and calm hideaway perfect for relaxation and rejuvenation.", image: "./propertiesCardImgs/heuvelKandy.png" },
+  { id: 1, name: "Luna Laguna", top: "39.25%", left: "27.5%", category: "Private Villa", description: "A stunning coastal escape offering absolute privacy and tranquil lagoon views.", image: "./propertiesCardImgs/lunaLaguna.jpg", websiteLink: "https://tropicalgardenvillas.com/luna-laguna/" },
+  { id: 2, name: "Lakeside Retreat Malsiripura", top: "52.75%", left: "43%", category: "Boutique Hotel", description: "Nestled by a serene lake, offering a perfect blend of nature and luxury.", image: "./propertiesCardImgs/lakeside.jpg", websiteLink: "https://lakesideretreatlk.com/" },
+  { id: 3, name: "Margossa Residence Kandy", top: "61.5%", left: "46.75%", category: "Heritage Villa", description: "Colonial charm meets modern tropical luxury in the heart of Kandy.", image: "./propertiesCardImgs/margossaResidence.jpg", websiteLink: "https://www.airbnb.co.uk/rooms/1347809840414743566?source_impression_id=p3_1777884475_P3KuwuxgCxieAufw" },
+  { id: 4, name: "Casa Heliconia", top: "63.5%", left: "35.5%", category: "Garden Estate", description: "An exotic jungle paradise surrounded by lush tropical vegetation.", image: "./propertiesCardImgs/casaHeliconia.jpg", websiteLink: "https://tropicalgardenvillas.com/casa-heliconia/" },
+  { id: 5, name: "Villa Morawala", top: "63%", left: "27.5%", category: "Beach Villa", description: "Breathtaking ocean views and pristine beaches right at your doorstep.", image: "./propertiesCardImgs/villaMorawala.jpg", websiteLink: "#" },
+  { id: 6, name: "Camellia Residencies", top: "70.75%", left: "29.25%", category: "Private Villa", description: "Modern luxury living with exceptional access to local attractions.", image: "./propertiesCardImgs/camelliaResidencies.webp", websiteLink: "https://camelliaresidencies.com/" },
+  { id: 7, name: "SinhaGiri Mansion", top: "68.5%", left: "51%", category: "Historic Residence", description: "A majestic mansion echoing the grandeur of Sri Lanka's rich history.", image: "./propertiesCardImgs/sinhagiri.jpg", websiteLink: "https://tropicalgardenvillas.com/sinhagiri-mansion/" },
+  { id: 8, name: "Villa Vista Haputale", top: "74.75%", left: "55.5%", category: "Mountain Lodge", description: "Perched high in the misty mountains with panoramic views of the island.", image: "./propertiesCardImgs/villaVista.jpg", websiteLink: "https://tropicalgardenvillas.com/villa-vista/" },
+  { id: 9, name: "Boutique 87", top: "81.25%", left: "32%", category: "Boutique Hotel", description: "A uniquely designed Bawa-inspired property offering an intimate stay.", image: "./propertiesCardImgs/Boutique87.jpg", websiteLink: "https://boutique-87.com/" },
+  { id: 10, name: "Sihina", top: "84%", left: "34.5%", category: "Private Villa", description: "A dreamlike escape combining contemporary design with tropical ease.", image: "./propertiesCardImgs/sihina.jpg", websiteLink: "https://www.airbnb.com/rooms/13226681?source_impression_id=p3_1777884619_P3p2dfviqSantwtu" },
+  { id: 11, name: "Camellia Ranch", top: "88%", left: "38.5%", category: "Garden Estate", description: "Expansive green landscapes offering a serene and private retreat.", image: "./propertiesCardImgs/camelliaRanch.jpg", websiteLink: "https://camelliaranch.com/" },
+  { id: 12, name: "Treasure Rock", top: "86.5%", left: "62.75%", category: "Eco Luxury", description: "Immerse yourself in nature without compromising on high-end comfort.", image: "./propertiesCardImgs/treasureRock.jpg", websiteLink: "https://tropicalgardenvillas.com/treasure-rock/" },
+  { id: 13, name: "Liv - Unawatuna", top: "91%", left: "37%", category: "Coastal Villa", description: "Vibrant beachside living in one of Sri Lanka's most iconic bays.", image: "./propertiesCardImgs/liv.jpg", websiteLink: "#" },
+  { id: 14, name: "Lotus & Moon", top: "92.5%", left: "40.5%", category: "Boutique Hotel", description: "A mystical and calm hideaway perfect for relaxation and rejuvenation.", image: "./propertiesCardImgs/lotus.jpeg", websiteLink: "https://www.airbnb.com/rooms/1530906375827575079?source_impression_id=p3_1777884769_P3hTb6voa9vpkK11" },
+  { id: 15, name: "Heuvel Villa Kandy", top: "63%", left: "50.5%", category: "Boutique Hotel", description: "A mystical and calm hideaway perfect for relaxation and rejuvenation.", image: "./propertiesCardImgs/heuvelKandy.png", websiteLink: "#" },
 ];
 
 export function Portfolio() {
@@ -173,10 +173,24 @@ export function Portfolio() {
                       {activeProperty.description}
                     </p>
                     
-                    <button className="flex items-center gap-2 text-[10px] tracking-[0.2em] uppercase font-sans hover:text-white transition-colors w-fit group/btn">
-                      <span className="border-b border-[#F5F5DC]/50 pb-1 group-hover/btn:border-white transition-colors drop-shadow-sm">Step Inside</span>
-                      <span className="text-sm transform group-hover/btn:translate-x-2 transition-transform drop-shadow-sm">→</span>
-                    </button>
+                    {/* 🚀 Updated: 'button' tag eka wenuwata 'a' tag eka damma link ekata yanna */}
+                    <a 
+                      href={activeProperty.websiteLink !== "#" ? activeProperty.websiteLink : undefined}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`flex items-center gap-2 text-[10px] tracking-[0.2em] uppercase font-sans w-fit group/btn transition-colors
+                        ${activeProperty.websiteLink !== "#" ? "hover:text-white text-[#F5F5DC]" : "text-[#F5F5DC]/50 cursor-not-allowed"}
+                      `}
+                    >
+                      <span className={`border-b pb-1 drop-shadow-sm transition-colors
+                        ${activeProperty.websiteLink !== "#" ? "border-[#F5F5DC]/50 group-hover/btn:border-white" : "border-transparent"}
+                      `}>
+                        {activeProperty.websiteLink !== "#" ? "Step Inside" : "Link Coming Soon"}
+                      </span>
+                      {activeProperty.websiteLink !== "#" && (
+                        <span className="text-sm transform group-hover/btn:translate-x-2 transition-transform drop-shadow-sm">→</span>
+                      )}
+                    </a>
                   </div>
                 </div>
 
@@ -187,7 +201,7 @@ export function Portfolio() {
           </div>
         </div>
 
-        {/* 🚀 UPGRADED: Bottom Grid Section - 3 Cards per row */}
+        {/* Bottom Grid Section - 3 Cards per row */}
         <div id="all-properties" className="mt-20 scroll-mt-24">
           <div className="flex items-center gap-4 mb-6 lg:mb-10">
             <h3 className="text-[#023020] font-serif text-2xl lg:text-3xl">Collection</h3>
@@ -201,12 +215,10 @@ export function Portfolio() {
             </span>
           </div>
 
-          {/* 🚀 Changed: lg:grid-cols-3 (always 3 columns on large screens), increased gaps (gap-8 lg:gap-10) */}
           <div ref={scrollContainerRef} className="flex lg:grid lg:grid-cols-3 gap-8 lg:gap-10 overflow-x-auto snap-x snap-mandatory pb-8 lg:pb-0" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
             {portfolioProperties.map((property) => (
               <div key={property.id} className="min-w-[85vw] sm:min-w-[320px] lg:min-w-0 snap-center bg-white rounded-sm shadow-md overflow-hidden flex flex-col border border-[#023020]/10 group cursor-pointer hover:shadow-xl transition-shadow duration-300">
                 
-                {/* 🚀 Changed: Increased height to lg:h-64 so images look proportional on larger cards */}
                 <div className="h-56 lg:h-64 bg-gray-200 relative overflow-hidden flex items-center justify-center">
                   <div className="absolute inset-0 bg-[#023020]/5 group-hover:scale-105 transition-transform duration-700 z-10" />
                   {property.image ? (
@@ -219,10 +231,25 @@ export function Portfolio() {
                   <span className="text-[#023020]/60 text-[9px] tracking-[0.2em] uppercase font-sans mb-2">{property.category}</span>
                   <h4 className="font-serif text-xl lg:text-2xl text-[#023020] mb-3">{property.name}</h4>
                   <p className="font-sans text-[#333]/70 text-xs lg:text-sm leading-relaxed mb-6 flex-grow">{property.description}</p>
-                  <button className="flex items-center gap-2 text-[12px] tracking-[0.2em] uppercase font-sans text-[#023020] hover:text-[#D32F2F] transition-colors w-fit">
-                    <span className="border-b border-[#023020]/30 pb-0.5 text-[#023020] font-bold">View Details</span>
-                    <span className="text-xs transform group-hover:translate-x-1 transition-transform">→</span>
-                  </button>
+                  
+                  {/* 🚀 Updated: 'button' tag eka wenuwata 'a' tag eka damma link ekata yanna */}
+                  <a 
+                    href={property.websiteLink !== "#" ? property.websiteLink : undefined}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`flex items-center gap-2 text-[12px] tracking-[0.2em] uppercase font-sans w-fit transition-colors
+                      ${property.websiteLink !== "#" ? "text-[#023020] hover:text-[#D32F2F] group/bottomBtn" : "text-[#023020]/40 cursor-not-allowed"}
+                    `}
+                  >
+                    <span className={`border-b pb-0.5 font-bold transition-colors
+                      ${property.websiteLink !== "#" ? "border-[#023020]/30" : "border-transparent"}
+                    `}>
+                      {property.websiteLink !== "#" ? "View Details" : "Coming Soon"}
+                    </span>
+                    {property.websiteLink !== "#" && (
+                      <span className="text-xs transform group-hover/bottomBtn:translate-x-1 transition-transform">→</span>
+                    )}
+                  </a>
                 </div>
               </div>
             ))}

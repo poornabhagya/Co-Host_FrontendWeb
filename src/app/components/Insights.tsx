@@ -1,4 +1,5 @@
 import { Camera, Building2, Sparkles, TrendingUp } from "lucide-react";
+import { Link } from "react-router";
 
 // 🚀 අලුතින් දාපු පින්තූර ටික (ඔයාට ඕන නම් පස්සේ වෙනස් කරගන්න පුළුවන්)
 const PHOTO_IMG = "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1080&q=80";
@@ -10,7 +11,7 @@ const insightItems = [
   { 
     title: "Photo Locations", 
     icon: Camera, 
-    link: "#", // 🚀 Changed: null වෙනුවට "#" දැම්මා බොත්තම පෙන්නන්න
+    link: "/photo-locations",
     image: PHOTO_IMG,
     tagline: "Exclusive spaces for brand campaigns.",
     bullets: ["Pre-wedding photography", "Fashion & brand shoots", "Architectural features"]
@@ -169,13 +170,23 @@ export function Insights() {
                       </p>
 
                       {/* 🚀 Changed: දැන් හැම කාඩ් එකටම අනිවාර්යයෙන්ම Button එක එනවා */}
-                      <a 
-                        href={item.link || "#"}
-                        className="inline-flex items-center gap-2 text-[10px] tracking-[0.2em] uppercase font-sans text-[#F5F5DC] hover:text-white transition-colors mt-4 group/btn"
-                      >
-                        <span className="border-b border-[#F5F5DC]/50 pb-0.5 group-hover/btn:border-white transition-colors drop-shadow-sm">Learn More</span>
-                        <span className="text-xs transform group-hover/btn:translate-x-1 transition-transform drop-shadow-sm">→</span>
-                      </a>
+                      {item.link.startsWith("/") ? (
+                        <Link 
+                          to={item.link}
+                          className="inline-flex items-center gap-2 text-[10px] tracking-[0.2em] uppercase font-sans text-[#F5F5DC] hover:text-white transition-colors mt-4 group/btn"
+                        >
+                          <span className="border-b border-[#F5F5DC]/50 pb-0.5 group-hover/btn:border-white transition-colors drop-shadow-sm">Learn More</span>
+                          <span className="text-xs transform group-hover/btn:translate-x-1 transition-transform drop-shadow-sm">→</span>
+                        </Link>
+                      ) : (
+                        <a 
+                          href={item.link || "#"}
+                          className="inline-flex items-center gap-2 text-[10px] tracking-[0.2em] uppercase font-sans text-[#F5F5DC] hover:text-white transition-colors mt-4 group/btn"
+                        >
+                          <span className="border-b border-[#F5F5DC]/50 pb-0.5 group-hover/btn:border-white transition-colors drop-shadow-sm">Learn More</span>
+                          <span className="text-xs transform group-hover/btn:translate-x-1 transition-transform drop-shadow-sm">→</span>
+                        </a>
+                      )}
                     </div>
                   </div>
 

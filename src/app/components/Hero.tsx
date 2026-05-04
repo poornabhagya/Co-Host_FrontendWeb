@@ -9,26 +9,12 @@ export function Hero() {
   return (
     <section
       id="home"
-      
       className="relative min-h-screen flex flex-col items-center justify-center pt-32 pb-20 overflow-hidden"
       style={{ backgroundImage: `url(${HERO_IMAGE})`, backgroundSize: "cover", backgroundPosition: "center" }}
     >
 
-      {/* Layered overlays for depth */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(to bottom, rgba(2,48,32,0.55) 0%, rgba(2,48,32,0.35) 50%, rgba(2,48,32,0.75) 100%)",
-        }}
-      />
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(ellipse at center, transparent 40%, rgba(2,48,32,0.4) 100%)",
-        }}
-      />
+      {/* Cleaned up overlay: Yanthamata dark tint ekak witharai dunne akuru kiyawanna lesi wenna. Green eka ain kara. */}
+      <div className="absolute inset-0 bg-black/30" />
 
       {/* Content: centered 'Co-Host Ceylon' with headline positioned below */}
       <div className="relative z-10 w-full max-w-5xl mx-auto px-6">
@@ -69,7 +55,6 @@ export function Hero() {
         {/* Preserve structure for potential CTAs or subheadings (kept empty) */}
         <div className="relative z-10 flex flex-col sm:flex-row items-center gap-4" />
       </div>
-
       
     </section>
   );
