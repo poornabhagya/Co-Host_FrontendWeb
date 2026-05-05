@@ -21,18 +21,7 @@ export function Hero() {
         {/* Centered stack: brand name with headline directly below */}
         <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
           <div className="flex flex-col items-center gap-2 text-center px-4">
-            <div
-              className="text-[#F5F5DC] leading-none drop-shadow-[0_2px_6px_rgba(0,0,0,0.6)]"
-              style={{
-                fontFamily: "'Great Vibes', cursive",
-                fontSize: "clamp(2.4rem, 9vw, 7rem)",
-                fontWeight: 400,
-                letterSpacing: "-0.02em",
-                marginTop: "10rem",
-              }}
-            >
-              Co-Host Ceylon
-            </div>
+            
 
             <h1
               className="text-[#F5F5DC]"
@@ -42,7 +31,7 @@ export function Hero() {
                 fontWeight: 200,
                 lineHeight: 1.15,
                 letterSpacing: "-0.01em",
-                marginTop: "15rem",
+                marginTop: "clamp(15rem, 40vh, 42rem)",
               }}
             >
               Elevating Sri Lanka's Finest Villas
