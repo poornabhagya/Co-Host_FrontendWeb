@@ -149,7 +149,7 @@ export function Portfolio() {
                 )}
                 
                 {/* Darker gradient that becomes even darker on hover to protect white text */}
-                <div className="absolute inset-x-0 bottom-0 h-full bg-gradient-to-t from-black/90 via-black/40 to-transparent z-10 pointer-events-none opacity-70 group-hover:opacity-100 transition-all duration-500" />
+                <div className="absolute inset-x-0 bottom-0 h-[60%] bg-gradient-to-t from-black/60 to-transparent z-10 pointer-events-none transition-all duration-500" />
               </div>
 
               {/* Bottom Box (Transparent) */}
