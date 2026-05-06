@@ -107,14 +107,14 @@ export function Navigation() {
 
           {/* CTA + Mobile toggle */}
           <div className="flex items-center gap-4">
-            {/* Desktop Book Now */}
-            <button
+            {/* Desktop Book Now <button
               onClick={() => console.log("Book Now clicked - Section pending")} 
               className="hidden lg:block px-5 py-2 bg-[#F5F5DC] text-[#023020] text-xs tracking-[0.15em] uppercase hover:bg-white transition-all duration-300 whitespace-nowrap font-medium"
               style={{ fontFamily: "'Montserrat', sans-serif" }}
             >
               Book Now
-            </button>
+            </button>*/}
+            
 
             {/* Desktop Contact Us */}
             <button
