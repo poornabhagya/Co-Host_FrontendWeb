@@ -75,11 +75,7 @@ export function Contact() {
         id="contact"
         className="relative py-28 lg:py-36 overflow-hidden"
       >
-        {/* Background */}
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${CONTACT_BG})` }}
-        />
+        
         <div
           className="absolute inset-0"
           style={{ background: "rgba(2,48,32,0.88)" }}
