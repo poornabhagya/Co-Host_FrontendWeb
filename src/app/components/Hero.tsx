@@ -27,7 +27,7 @@ export function Hero() {
               className="text-[#F5F5DC]"
               style={{
                 fontFamily: "'Playfair Display', serif",
-                fontSize: "clamp(1rem, 2.8vw, 1.5rem)",
+                fontSize: "clamp(2.5rem, 7vw, 3.5rem)",
                 fontWeight: 200,
                 lineHeight: 1.15,
                 letterSpacing: "-0.01em",
