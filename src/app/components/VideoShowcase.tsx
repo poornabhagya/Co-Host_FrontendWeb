@@ -28,7 +28,7 @@ export function VideoShowcase() {
 
       >
 
-        <source src="/Co-Host_FrontendWeb/video/3.mp4" type="video/mp4" />
+        <source src="/Co-Host_FrontendWeb/video/final.mp4" type="video/mp4" />
 
         Your browser does not support the video tag.
 
