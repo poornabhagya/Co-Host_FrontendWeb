@@ -6,7 +6,7 @@ export function VideoShowcase() {
 
   return (
 
-    <section className="relative w-full h-[60vh] lg:h-[80vh] flex items-center justify-center overflow-hidden bg-[#023020]">
+    <section id="video-section" className="relative w-full h-[60vh] lg:h-screen flex items-center justify-center overflow-hidden bg-[#023020]">
 
      
 
@@ -28,7 +28,7 @@ export function VideoShowcase() {
 
       >
 
-        <source src="/Co-Host_FrontendWeb/video/final.mp4" type="video/mp4" />
+        <source src="/Co-Host_FrontendWeb/video/3.mp4" type="video/mp4" />
 
         Your browser does not support the video tag.
 

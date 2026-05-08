@@ -7,10 +7,9 @@ const navItems = [
   { label: "Home", href: "#home" },
   { label: "Partnership Services", href: "#services" },
   { label: "Collection", href: "#portfolio" },
-  //{ label: "Experiences", href: "#experiences" },
+  // { label: "Experiences", href: "#experiences" },
   { label: "About", href: "#about" },
   { label: "Other", href: "#insights" },
-  
 ];
 
 export function Navigation() {
@@ -20,8 +19,23 @@ export function Navigation() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 60);
+    const handleScroll = () => {
+      let shouldBeSolid = window.scrollY > 60;
+
+      const videoSection = document.getElementById("video-section");
+      if (videoSection) {
+        const rect = videoSection.getBoundingClientRect();
+        if (rect.top <= 80 && rect.bottom >= 80) {
+          shouldBeSolid = false; 
+        }
+      }
+
+      setScrolled(shouldBeSolid);
+    };
+
     window.addEventListener("scroll", handleScroll);
+    handleScroll(); 
+    
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -39,15 +53,11 @@ export function Navigation() {
   const handleNavClick = (href: string) => {
     setMobileOpen(false);
     
-    // If on home page, scroll to anchor
     if (location.pathname === "/") {
       const el = document.querySelector(href);
       if (el) el.scrollIntoView({ behavior: "smooth" });
     } else {
-      // If on another page, navigate to home with hash
       navigate("/" + href);
-      
-      // Wait for page to load and then scroll
       setTimeout(() => {
         const el = document.querySelector(href);
         if (el) el.scrollIntoView({ behavior: "smooth" });
@@ -57,12 +67,9 @@ export function Navigation() {
 
   const handleLogoClick = () => {
     setMobileOpen(false);
-    
-    // If already on home page, scroll to top
     if (location.pathname === "/") {
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
-      // Otherwise navigate to home
       navigate("/");
     }
   };
@@ -70,116 +77,122 @@ export function Navigation() {
   return (
     <>
       <nav
-        className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
+        className="fixed top-0 left-0 right-0 z-40 transition-all duration-500"
         style={{
           background: scrolled ? "rgba(2, 48, 32, 0.97)" : "rgba(2, 48, 32, 0.15)",
           backdropFilter: scrolled ? "blur(12px)" : "blur(4px)",
           borderBottom: scrolled ? "1px solid rgba(245,245,220,0.12)" : "none",
         }}
       >
-        <div className="max-w-screen-2xl mx-auto px-6 py-4 flex items-center justify-between gap-8 xl:gap-12">
+        <div className="max-w-screen-2xl mx-auto px-6 py-4 grid grid-cols-3 items-center">
           
-          <button
-            onClick={handleLogoClick}
-            className="flex items-center whitespace-nowrap transition-transform duration-300 hover:scale-105"
-          >
-            <img 
-              src="./logo.png" 
-              alt="Co-Host Ceylon Logo" 
-              className="h-16 lg:h-20 xl:h-24 w-auto object-contain" 
-            />
-          </button>
-
-          {/* Desktop Nav */}
-          <ul className="hidden xl:flex items-center justify-center gap-6 2xl:gap-8 flex-1">
-            {navItems.map((item) => (
-              <li key={item.label}>
-                <button
-                  onClick={() => handleNavClick(item.href)}
-                  className="text-[#F5F5DC]/80 hover:text-[#F5F5DC] transition-colors duration-200 text-[11px] 2xl:text-xs tracking-[0.1em] uppercase whitespace-nowrap"
-                  style={{ fontFamily: "'Montserrat', sans-serif" }}
-                >
-                  {item.label}
-                </button>
-              </li>
-            ))}
-          </ul>
-
-          {/* CTA + Mobile toggle */}
-          <div className="flex items-center gap-4">
-            {/* Desktop Book Now <button
-              onClick={() => console.log("Book Now clicked - Section pending")} 
-              className="hidden lg:block px-5 py-2 bg-[#F5F5DC] text-[#023020] text-xs tracking-[0.15em] uppercase hover:bg-white transition-all duration-300 whitespace-nowrap font-medium"
-              style={{ fontFamily: "'Montserrat', sans-serif" }}
+          {/* Left: Menu Burger Icon */}
+          <div className="flex justify-start">
+            <button
+              className="text-[#F5F5DC] group p-2 -ml-2" 
+              onClick={() => setMobileOpen(true)}
             >
-              Book Now
-            </button>*/}
-            
+              <Menu size={32} className="transform transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3" />
+            </button>
+          </div>
 
-            {/* Desktop Contact Us */}
+          {/* Center: Logo */}
+          <div className="flex justify-center">
+            <button
+              onClick={handleLogoClick}
+              className="flex items-center whitespace-nowrap transition-transform duration-500 hover:scale-105"
+            >
+              <img 
+                src="./logo.png" 
+                alt="Co-Host Ceylon Logo" 
+                className="h-16 lg:h-20 xl:h-24 w-auto object-contain" 
+              />
+            </button>
+          </div>
+
+          {/* Right: Contact Us Button */}
+          <div className="flex justify-end">
             <button
               onClick={() => handleNavClick("#contact")}
-              className="hidden lg:block px-5 py-2 border border-[#F5F5DC]/60 text-[#F5F5DC] text-xs tracking-[0.15em] uppercase hover:bg-[#F5F5DC] hover:text-[#023020] transition-all duration-300 whitespace-nowrap"
+              className="hidden md:block px-6 py-2.5 border border-[#F5F5DC]/60 text-[#F5F5DC] text-[11px] tracking-[0.15em] uppercase hover:bg-[#F5F5DC] hover:text-[#023020] transition-all duration-300 whitespace-nowrap"
               style={{ fontFamily: "'Montserrat', sans-serif" }}
             >
               Contact Us
             </button>
-            
-            <button
-              className="xl:hidden text-[#F5F5DC] z-[60]" 
-              onClick={() => setMobileOpen(!mobileOpen)}
-            >
-              {mobileOpen ? <X size={26} /> : <Menu size={26} />}
-            </button>
           </div>
+
         </div>
       </nav>
 
-      {/* Mobile Menu */}
-      <div
-        className={`fixed inset-0 z-40 overflow-y-auto transition-all duration-500 ${
+      {/* Dark Overlay Background */}
+      <div 
+        className={`fixed inset-0 bg-black/60 z-40 backdrop-blur-sm transition-opacity duration-500 ${
           mobileOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
-        style={{ background: "rgba(2, 48, 32, 0.98)", backdropFilter: "blur(20px)" }}
+        onClick={() => setMobileOpen(false)}
+      />
+
+      {/* Left Side Menu Panel */}
+      <div
+        className={`fixed top-0 left-0 h-full w-[80vw] sm:w-[320px] z-50 bg-[#023020] shadow-2xl transform transition-transform duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] flex flex-col ${
+          mobileOpen ? "translate-x-0" : "-translate-x-full"
+        }`}
       >
-        <div className="flex flex-col min-h-full px-8 pt-32 pb-12">
+        
+        {/* Close Button (Top Right) */}
+        <div className="flex justify-end pt-6 px-6">
+          <button 
+            onClick={() => setMobileOpen(false)} 
+            className="text-[#F5F5DC]/70 hover:text-[#F5F5DC] transition-all duration-300 group p-2"
+          >
+            <X size={32} className="transform transition-transform duration-500 group-hover:rotate-90 group-hover:scale-110" />
+          </button>
+        </div>
+
+        {/* Centered Logo */}
+        <div className="flex justify-center px-6 pt-6 sm:pt-10 pb-2">
+          <img 
+            src="./logo.png" 
+            alt="Co-Host Ceylon Logo" 
+            className="h-20 sm:h-24 w-auto object-contain" 
+          />
+        </div>
+
+        {/* 🚀 Menu Links & Contact Button */}
+        <div className="flex flex-col justify-start px-10 pb-10 mt-10">
           
+          {/* Links Section */}
           <ul className="flex flex-col gap-6">
             {navItems.map((item) => (
-              <li key={item.label} className="border-b border-[#F5F5DC]/10 pb-4">
+              <li key={item.label} className="overflow-hidden py-1">
                 <button
                   onClick={() => handleNavClick(item.href)}
-                  className="text-[#F5F5DC] text-lg tracking-[0.08em] w-full text-left"
-                  style={{ fontFamily: "'Playfair Display', serif" }}
+                  className="group relative text-[#F5F5DC]/80 hover:text-[#F5F5DC] w-full text-left transition-colors duration-300"
                 >
-                  {item.label}
+                  <span className="absolute left-0 top-1/2 -translate-y-1/2 w-3 h-[1px] bg-[#F5F5DC] opacity-0 group-hover:opacity-100 transition-all duration-300 transform -translate-x-4 group-hover:translate-x-0" />
+                  
+                  <span 
+                    className="block text-[12px] sm:text-[13px] tracking-[0.15em] uppercase transform transition-transform duration-300 group-hover:translate-x-5"
+                    style={{ fontFamily: "'Montserrat', sans-serif" }}
+                  >
+                    {item.label}
+                  </span>
                 </button>
               </li>
             ))}
           </ul>
 
-          {/* Mobile Buttons */}
-          <div className="mt-auto pt-8 flex flex-col gap-4 w-full">
-            <button
-              onClick={() => {
-                setMobileOpen(false); 
-                console.log("Book Now clicked - Section pending");
-              }}
-              className="w-full px-8 py-3.5 bg-[#F5F5DC] text-[#023020] text-xs sm:text-sm tracking-[0.15em] uppercase hover:bg-white transition-all duration-300 font-medium"
-              style={{ fontFamily: "'Montserrat', sans-serif" }}
-            >
-              Book Now
-            </button>
-
+          {/* 🚀 Contact Us Button - mt-auto අයින් කරලා mt-12 දැම්මා */}
+          <div className="mt-12 w-full">
             <button
               onClick={() => handleNavClick("#contact")}
-              className="w-full px-8 py-3.5 border border-[#F5F5DC]/60 text-[#F5F5DC] text-xs sm:text-sm tracking-[0.15em] uppercase hover:bg-[#F5F5DC] hover:text-[#023020] transition-all duration-300"
+              className="w-full px-8 py-4 border border-[#F5F5DC]/60 text-[#F5F5DC] text-[11px] tracking-[0.15em] uppercase hover:bg-[#F5F5DC] hover:text-[#023020] transition-all duration-300"
               style={{ fontFamily: "'Montserrat', sans-serif" }}
             >
               Contact Us
             </button>
           </div>
-
+          
         </div>
       </div>
     </>

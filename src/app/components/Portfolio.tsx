@@ -49,7 +49,7 @@ export function Portfolio() {
   };
 
   return (
-    <section id="portfolio" className="py-12 lg:py-16 min-h-screen flex items-center" style={{ background: "#F5F5DC" }}>
+    <section id="portfolio" className="scroll-mt-24 py-12 lg:py-16 min-h-screen flex items-center" style={{ background: "#F5F5DC" }}>
       <div className="max-w-screen-xl w-full mx-auto px-6">
         
         <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-center lg:items-stretch">

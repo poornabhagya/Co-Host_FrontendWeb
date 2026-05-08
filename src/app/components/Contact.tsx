@@ -396,7 +396,8 @@ export function Contact() {
                 <img
                   src="./logo.png"
                   alt="Co-Host Ceylon Logo"
-                  className="h-22 w-auto object-contain"
+                  // 🚀 මෙන්න මෙතන තමයි Navigation එකේ දුන්න Size එකම දුන්නේ
+                  className="h-16 lg:h-20 xl:h-24 w-auto object-contain"
                 />
               </div>
               <p
@@ -418,7 +419,7 @@ export function Contact() {
                 Navigation
               </p>
               <ul className="space-y-2">
-                {["About", "Partnership Services", "Collection", "Other", "Book Now", "Contact"].map(
+                {["About", "Partnership Services", "Collection", "Other","Contact"].map(
                   (item) => (
                     <li key={item}>
                       <button
