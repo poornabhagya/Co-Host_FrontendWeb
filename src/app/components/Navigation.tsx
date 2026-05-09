@@ -79,8 +79,8 @@ export function Navigation() {
       <nav
         className="fixed top-0 left-0 right-0 z-40 transition-all duration-500"
         style={{
-          background: scrolled ? "rgba(2, 48, 32, 0.97)" : "rgba(2, 48, 32, 0.15)",
-          backdropFilter: scrolled ? "blur(12px)" : "blur(4px)",
+          background: scrolled ? "rgba(2, 48, 32, 0.97)" : "rgba(0, 0, 0, 0)",
+          backdropFilter: scrolled ? "blur(12px)" : "none",
           borderBottom: scrolled ? "1px solid rgba(245,245,220,0.12)" : "none",
         }}
       >

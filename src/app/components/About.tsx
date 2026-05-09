@@ -1,11 +1,19 @@
-const ABOUT_IMAGE =
-  `${import.meta.env.BASE_URL}webpageImg/about.jpg`;
+const ABOUT_IMAGE = `${import.meta.env.BASE_URL}webpageImg/about.jpg`;
 
-const pillars = [
-  { number: "01", label: "Revenue Maximisation" },
-  { number: "02", label: "Brand Positioning" },
-  { number: "03", label: "Operational Excellence" },
-  { number: "04", label: "Guest Experience" },
+// 🚀 Space එක වෙනුවට %20 දාලා ෆික්ස් කළා. දැන් අනිවාර්යයෙන්ම ලෝගෝ ටික පෙනේවි.
+const companyLogos = [
+  { name: "Property Logo 1", src: `${import.meta.env.BASE_URL}propertyLogos/Artboard%201.png` },
+  { name: "Property Logo 2", src: `${import.meta.env.BASE_URL}propertyLogos/Artboard%202.png` },
+  { name: "Property Logo 3", src: `${import.meta.env.BASE_URL}propertyLogos/Artboard%203.png` },
+  { name: "Property Logo 4", src: `${import.meta.env.BASE_URL}propertyLogos/Artboard%204.png` },
+  { name: "Property Logo 5", src: `${import.meta.env.BASE_URL}propertyLogos/Artboard%205.png` },
+  { name: "Property Logo 6", src: `${import.meta.env.BASE_URL}propertyLogos/Artboard%206.png` },
+  { name: "Property Logo 7", src: `${import.meta.env.BASE_URL}propertyLogos/Artboard%207.png` },
+  { name: "Property Logo 8", src: `${import.meta.env.BASE_URL}propertyLogos/Artboard%208.png` },
+  { name: "Property Logo 9", src: `${import.meta.env.BASE_URL}propertyLogos/Artboard%2013.png` },
+  { name: "Property Logo 10", src: `${import.meta.env.BASE_URL}propertyLogos/Artboard%2010.png` },
+  { name: "Property Logo 11", src: `${import.meta.env.BASE_URL}propertyLogos/Artboard%2011.png` },
+  { name: "Property Logo 12", src: `${import.meta.env.BASE_URL}propertyLogos/Artboard%2012.png` },
 ];
 
 export function About() {
@@ -27,7 +35,8 @@ export function About() {
           </span>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+        {/* Text and Image Grid */}
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center mb-24">
           {/* Left: Text */}
           <div>
             <h2
@@ -58,38 +67,11 @@ export function About() {
               <p>
                 our core elements are :
               </p>
-              
-            </div>
-
-            {/* Pillars */}
-            <div className="grid grid-cols-2 gap-px mt-12 border border-[#023020]/15">
-              {pillars.map((p) => (
-                <div
-                  key={p.number}
-                  className="p-6 border border-[#023020]/10 hover:bg-[#023020]/5 transition-colors duration-300"
-                >
-                  <span
-                    className="text-[#023020]/30 text-xs tracking-[0.2em]"
-                    style={{ fontFamily: "'Montserrat', sans-serif" }}
-                  >
-                    {p.number}
-                  </span>
-                  <p
-                    className="text-[#023020] mt-2 text-sm"
-                    style={{
-                      fontFamily: "'Playfair Display', serif",
-                      fontWeight: 400,
-                    }}
-                  >
-                    {p.label}
-                  </p>
-                </div>
-              ))}
             </div>
           </div>
 
           {/* Right: Image */}
-          <div className="relative">
+          <div className="relative mt-12 lg:mt-0">
             <div
               className="absolute -top-6 -left-6 w-full h-full border border-[#023020]/20"
               style={{ zIndex: 0 }}
@@ -123,6 +105,30 @@ export function About() {
             </div>
           </div>
         </div>
+
+        {/* Full-width Logo Section at the bottom */}
+        <div className="pt-16 border-t border-[#023020]/10">
+          <p 
+            className="text-[#023020]/40 text-[9px] tracking-[0.3em] uppercase mb-16 text-center font-medium"
+            style={{ fontFamily: "'Montserrat', sans-serif" }}
+          >
+            In Association With
+          </p>
+          
+          <div className="flex flex-wrap items-center justify-center gap-10 md:gap-15 lg:gap-8 opacity-90 px-4">
+            {companyLogos.map((logo, index) => (
+              <img
+                key={index}
+                src={logo.src}
+                alt={logo.name}
+                // 🚀 මොබයිල් එකේ සයිස් එක h-20 ඉඳන් h-32 (සහ sm:h-40) දක්වා ලොකු කළා.
+                // පළලත් max-w-[180px] කරලා ෆෝන් එකට ගැලපෙන්න හැදුවා.
+                className="h-32 sm:h-45 md:h-48 lg:h-60 w-auto max-w-[180px] sm:max-w-[220px] lg:max-w-[250px] object-contain transition-transform duration-500 hover:scale-105 "
+              />
+            ))}
+          </div>
+        </div>
+
       </div>
     </section>
   );
