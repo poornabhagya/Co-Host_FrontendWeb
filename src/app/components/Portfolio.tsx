@@ -110,8 +110,7 @@ export function Portfolio() {
                 </span>
               </div>
               <h2 className="text-[#023020] font-serif text-4xl lg:text-5xl leading-tight mb-4">
-                Properties We are <br className="hidden lg:block"/>
-                <em className="italic">Proud to Partner With</em>
+                Our Collection for <em className="italic"> You</em>
               </h2>
               <p className="text-[#333]/60 text-sm leading-relaxed mb-6 max-w-lg" style={{ fontFamily: "'Montserrat', sans-serif" }}>
                 A carefully curated collection of Sri Lanka's finest independent villas and boutique hotels. Each property in our portfolio is selected for its architectural character, location, and guest experience potential.
@@ -173,7 +172,6 @@ export function Portfolio() {
                       {activeProperty.description}
                     </p>
                     
-                    {/* 🚀 Updated: 'button' tag eka wenuwata 'a' tag eka damma link ekata yanna */}
                     <a 
                       href={activeProperty.websiteLink !== "#" ? activeProperty.websiteLink : undefined}
                       target="_blank"
@@ -203,10 +201,7 @@ export function Portfolio() {
 
         {/* Bottom Grid Section - 3 Cards per row */}
         <div id="all-properties" className="mt-20 scroll-mt-24">
-          <div className="flex items-center gap-4 mb-6 lg:mb-10">
-            <h3 className="text-[#023020] font-serif text-2xl lg:text-3xl">Collection</h3>
-            <div className="h-px bg-[#023020]/20 flex-grow max-w-xs" />
-          </div>
+          
 
           <div className="flex justify-end lg:hidden mb-4 pr-2">
             <span className="text-[10px] text-[#023020]/60 uppercase tracking-[0.2em] flex items-center gap-2 animate-pulse font-bold">
@@ -232,24 +227,42 @@ export function Portfolio() {
                   <h4 className="font-serif text-xl lg:text-2xl text-[#023020] mb-3">{property.name}</h4>
                   <p className="font-sans text-[#333]/70 text-xs lg:text-sm leading-relaxed mb-6 flex-grow">{property.description}</p>
                   
-                  {/* 🚀 Updated: 'button' tag eka wenuwata 'a' tag eka damma link ekata yanna */}
-                  <a 
-                    href={property.websiteLink !== "#" ? property.websiteLink : undefined}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`flex items-center gap-2 text-[12px] tracking-[0.2em] uppercase font-sans w-fit transition-colors
-                      ${property.websiteLink !== "#" ? "text-[#023020] hover:text-[#D32F2F] group/bottomBtn" : "text-[#023020]/40 cursor-not-allowed"}
-                    `}
-                  >
-                    <span className={`border-b pb-0.5 font-bold transition-colors
-                      ${property.websiteLink !== "#" ? "border-[#023020]/30" : "border-transparent"}
-                    `}>
-                      {property.websiteLink !== "#" ? "View Details" : "Coming Soon"}
-                    </span>
-                    {property.websiteLink !== "#" && (
-                      <span className="text-xs transform group-hover/bottomBtn:translate-x-1 transition-transform">→</span>
-                    )}
-                  </a>
+                  {/* 🚀 Updated: 'justify-between' පාවිච්චි කරලා Button එක දකුණටම තල්ලු කළා */}
+                  <div className="flex items-center justify-between w-full mt-auto">
+                    
+                    {/* Explore Link - Left Side */}
+                    <a 
+                      href={property.websiteLink !== "#" ? property.websiteLink : undefined}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`flex items-center gap-2 text-[12px] tracking-[0.2em] uppercase font-sans w-fit transition-colors
+                        ${property.websiteLink !== "#" ? "text-[#023020] hover:text-[#D32F2F] group/bottomBtn" : "text-[#023020]/40 cursor-not-allowed"}
+                      `}
+                    >
+                      <span className={`border-b pb-0.5 font-bold transition-colors
+                        ${property.websiteLink !== "#" ? "border-[#023020]/30" : "border-transparent"}
+                      `}>
+                        {property.websiteLink !== "#" ? "Explore" : "Coming Soon"}
+                      </span>
+                      {property.websiteLink !== "#" && (
+                        <span className="text-xs transform group-hover/bottomBtn:translate-x-1 transition-transform">→</span>
+                      )}
+                    </a>
+
+                    {/* 🚀 Book Now Solid Button - Right Side */}
+                    <button 
+                      onClick={(e) => {
+    e.stopPropagation(); // කාඩ් එක ක්ලික් වෙන එක නවත්තනවා
+    // 🚀 ක්ලික් කරපු Property එකේ නමත් එක්කම Modal එක ඕපන් කරනවා
+    window.dispatchEvent(new CustomEvent("openBookingModal", { detail: { property: property.name } }));
+  }}
+                      className="flex items-center gap-2 text-[10px] lg:text-[11px] tracking-[0.2em] uppercase font-bold font-sans w-fit transition-all duration-300 bg-[#023020] text-white hover:bg-[#023020]/80 px-4 py-2.5 rounded-sm shadow-sm group/bookBtn"
+                    >
+                      <span>Book Now</span>
+                      <span className="text-xs transform group-hover/bookBtn:translate-x-1 transition-transform">→</span>
+                    </button>
+
+                  </div>
                 </div>
               </div>
             ))}

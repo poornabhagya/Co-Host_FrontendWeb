@@ -1,22 +1,29 @@
 import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { Navigation } from "./components/Navigation";
 import { Hero } from "./components/Hero";
 import { About } from "./components/About";
-import { Services } from "./components/Services";
-//import { RealEstate } from "./components/RealEstate";
 import { VideoShowcase } from "./components/VideoShowcase";
 import { Portfolio } from "./components/Portfolio";
-//import { Experiences } from "./components/Experiences";
 import { Insights } from "./components/Insights";
-import { Contact } from "./components/Contact";
+import { Footer } from "./components/Footer"; 
+import { BookingModal } from "./components/BookingModal";
 
 export default function App() {
+  const location = useLocation();
+
   useEffect(() => {
-    // Handle hash-based scrolling
+    if (!location.hash) {
+      window.scrollTo(0, 0);
+    }
+  }, [location.pathname]);
+
+  useEffect(() => {
     const hash = window.location.hash;
-    if (hash) {
+    if (hash && hash !== "#/") {
       setTimeout(() => {
-        const element = document.querySelector(hash);
+        const targetId = hash.replace("#/", "#").split("#").pop();
+        const element = document.getElementById(targetId || "");
         if (element) {
           element.scrollIntoView({ behavior: "smooth" });
         }
@@ -25,23 +32,16 @@ export default function App() {
   }, []);
 
   return (
-    <div
-      className="min-h-screen"
-      style={{ fontFamily: "'Montserrat', sans-serif" }}
-    >
+    <div className="min-h-screen" style={{ fontFamily: "'Montserrat', sans-serif" }}>
       <Navigation />
       <Hero />
-      
-      <Services />
-      {/* <RealEstate /> */} {/* 👈 2. Component එක මෙහෙම කමෙන්ට් කරන්න */}
       <VideoShowcase />
+      <About />
       <Portfolio />
       
-      {/* <Experiences />*/}
-      <About />
       <Insights />
-      
-      <Contact />
+      <BookingModal />
+      <Footer />
     </div>
   );
 }

@@ -1,20 +1,7 @@
 const ABOUT_IMAGE = `${import.meta.env.BASE_URL}webpageImg/about.jpg`;
 
 // 🚀 Space එක වෙනුවට %20 දාලා ෆික්ස් කළා. දැන් අනිවාර්යයෙන්ම ලෝගෝ ටික පෙනේවි.
-const companyLogos = [
-  { name: "Property Logo 1", src: `${import.meta.env.BASE_URL}propertyLogos/Artboard%201.png` },
-  { name: "Property Logo 2", src: `${import.meta.env.BASE_URL}propertyLogos/Artboard%202.png` },
-  { name: "Property Logo 3", src: `${import.meta.env.BASE_URL}propertyLogos/Artboard%203.png` },
-  { name: "Property Logo 4", src: `${import.meta.env.BASE_URL}propertyLogos/Artboard%204.png` },
-  { name: "Property Logo 5", src: `${import.meta.env.BASE_URL}propertyLogos/Artboard%205.png` },
-  { name: "Property Logo 6", src: `${import.meta.env.BASE_URL}propertyLogos/Artboard%206.png` },
-  { name: "Property Logo 7", src: `${import.meta.env.BASE_URL}propertyLogos/Artboard%207.png` },
-  { name: "Property Logo 8", src: `${import.meta.env.BASE_URL}propertyLogos/Artboard%208.png` },
-  { name: "Property Logo 9", src: `${import.meta.env.BASE_URL}propertyLogos/Artboard%2013.png` },
-  { name: "Property Logo 10", src: `${import.meta.env.BASE_URL}propertyLogos/Artboard%2010.png` },
-  { name: "Property Logo 11", src: `${import.meta.env.BASE_URL}propertyLogos/Artboard%2011.png` },
-  { name: "Property Logo 12", src: `${import.meta.env.BASE_URL}propertyLogos/Artboard%2012.png` },
-];
+
 
 export function About() {
   return (
@@ -48,7 +35,7 @@ export function About() {
                 lineHeight: 1.25,
               }}
             >
-              A Dedicated Growth Partner for Sri Lanka's Finest Properties
+              We Offer the Best Collection for Your Relaxation
             </h2>
 
             <div
@@ -106,28 +93,7 @@ export function About() {
           </div>
         </div>
 
-        {/* Full-width Logo Section at the bottom */}
-        <div className="pt-16 border-t border-[#023020]/10">
-          <p 
-            className="text-[#023020]/40 text-[9px] tracking-[0.3em] uppercase mb-16 text-center font-medium"
-            style={{ fontFamily: "'Montserrat', sans-serif" }}
-          >
-            In Association With
-          </p>
-          
-          <div className="flex flex-wrap items-center justify-center gap-10 md:gap-15 lg:gap-8 opacity-90 px-4">
-            {companyLogos.map((logo, index) => (
-              <img
-                key={index}
-                src={logo.src}
-                alt={logo.name}
-                // 🚀 මොබයිල් එකේ සයිස් එක h-20 ඉඳන් h-32 (සහ sm:h-40) දක්වා ලොකු කළා.
-                // පළලත් max-w-[180px] කරලා ෆෝන් එකට ගැලපෙන්න හැදුවා.
-                className="h-32 sm:h-45 md:h-48 lg:h-60 w-auto max-w-[180px] sm:max-w-[220px] lg:max-w-[250px] object-contain transition-transform duration-500 hover:scale-105 "
-              />
-            ))}
-          </div>
-        </div>
+
 
       </div>
     </section>
