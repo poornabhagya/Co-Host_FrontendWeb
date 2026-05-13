@@ -1,11 +1,25 @@
-import { Camera, Building2, Sparkles, TrendingUp } from "lucide-react";
-import { Link } from "react-router";
+import { Camera, Building2, Sparkles, Compass } from "lucide-react";
+import { Link } from "react-router-dom"; 
 
-// 🚀 අලුතින් දාපු පින්තූර ටික (ඔයාට ඕන නම් පස්සේ වෙනස් කරගන්න පුළුවන්)
 const PHOTO_IMG = "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1080&q=80";
 const REAL_ESTATE_IMG = "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1080&q=80";
 const EXPERIENCES_IMG = "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1080&q=80";
 const INSIGHTS_IMG = "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1080&q=80";
+
+const companyLogos = [
+  { name: "Property Logo 1", src: `${import.meta.env.BASE_URL}propertyLogos/Artboard%201.png` },
+  { name: "Property Logo 2", src: `${import.meta.env.BASE_URL}propertyLogos/Artboard%202.png` },
+  { name: "Property Logo 3", src: `${import.meta.env.BASE_URL}propertyLogos/Artboard%203.png` },
+  { name: "Property Logo 4", src: `${import.meta.env.BASE_URL}propertyLogos/Artboard%204.png` },
+  { name: "Property Logo 5", src: `${import.meta.env.BASE_URL}propertyLogos/Artboard%205.png` },
+  { name: "Property Logo 6", src: `${import.meta.env.BASE_URL}propertyLogos/Artboard%206.png` },
+  { name: "Property Logo 7", src: `${import.meta.env.BASE_URL}propertyLogos/Artboard%207.png` },
+  { name: "Property Logo 8", src: `${import.meta.env.BASE_URL}propertyLogos/Artboard%208.png` },
+  { name: "Property Logo 9", src: `${import.meta.env.BASE_URL}propertyLogos/Artboard%2013.png` },
+  { name: "Property Logo 10", src: `${import.meta.env.BASE_URL}propertyLogos/Artboard%2010.png` },
+  { name: "Property Logo 11", src: `${import.meta.env.BASE_URL}propertyLogos/Artboard%2011.png` },
+  { name: "Property Logo 12", src: `${import.meta.env.BASE_URL}propertyLogos/Artboard%2012.png` },
+];
 
 const insightItems = [
   { 
@@ -33,9 +47,9 @@ const insightItems = [
     bullets: ["Local cultural tours", "Private beachfront dining", "Wellness & spa retreats"]
   },
   { 
-    title: "Insights", 
-    icon: TrendingUp, 
-    link: "#", // 🚀 Changed: null වෙනුවට "#" දැම්මා බොත්තම පෙන්නන්න
+    title: "Tours", 
+    icon: Compass, 
+    link: "#", 
     image: INSIGHTS_IMG,
     tagline: "Data-driven hospitality intelligence.",
     bullets: ["Market trends & analysis", "Revenue optimization", "Luxury sector reports"]
@@ -43,6 +57,15 @@ const insightItems = [
 ];
 
 export function Insights() {
+
+  // 🚀 අලුතෙන් දැම්ම Function එක (Portfolio Section එකට Scroll වෙන්න)
+  const scrollToProperties = () => {
+    const section = document.getElementById("all-properties");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   return (
     <section
       id="insights"
@@ -55,13 +78,7 @@ export function Insights() {
         <div className="grid lg:grid-cols-2 gap-12 mb-16">
           <div>
             <div className="flex items-center gap-4 mb-6">
-              <div className="w-8 h-px bg-[#023020]/40" />
-              <span
-                className="text-[#023020]/60 text-[10px] tracking-[0.4em] uppercase"
-                style={{ fontFamily: "'Montserrat', sans-serif" }}
-              >
-                Insights & Intelligence
-              </span>
+              <div className="w-120 h-px bg-[#023020]/40" />
             </div>
             <h2
               className="text-[#023020]"
@@ -72,7 +89,7 @@ export function Insights() {
                 lineHeight: 1.25,
               }}
             >
-              Other Services
+              Experiences
               <br />
             </h2>
           </div>
@@ -107,7 +124,7 @@ export function Insights() {
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 
-                {/* Dark Green Gradient + Glass Effect (Backdrop Blur) on Hover */}
+                {/* Dark Green Gradient + Glass Effect on Hover */}
                 <div
                   className="absolute inset-0 transition-all duration-500 opacity-70 group-hover:opacity-100 group-hover:backdrop-blur-sm z-10 pointer-events-none"
                   style={{
@@ -119,7 +136,6 @@ export function Insights() {
                 {/* Content Box */}
                 <div className="absolute bottom-0 left-0 right-0 p-6 lg:p-8 z-20 flex flex-col justify-end transition-all duration-500">
                   
-                  {/* Always Visible: Icon & Title */}
                   <div className="transform transition-transform duration-500 group-hover:-translate-y-2">
                     <div className="flex items-center gap-3 mb-3">
                       <Icon size={20} className="text-[#F5F5DC]/80" strokeWidth={1.5} />
@@ -139,7 +155,6 @@ export function Insights() {
                     </h3>
                   </div>
 
-                  {/* Hidden by Default, Revealed on Hover: Bullets & Tagline */}
                   <div className="grid grid-rows-[0fr] opacity-0 group-hover:grid-rows-[1fr] group-hover:opacity-100 transition-all duration-500 ease-in-out">
                     <div className="overflow-hidden">
                       <ul className="mt-2 space-y-2 mb-4">
@@ -169,7 +184,6 @@ export function Insights() {
                         {item.tagline}
                       </p>
 
-                      {/* 🚀 Changed: දැන් හැම කාඩ් එකටම අනිවාර්යයෙන්ම Button එක එනවා */}
                       {item.link.startsWith("/") ? (
                         <Link 
                           to={item.link}
@@ -194,6 +208,28 @@ export function Insights() {
               </div>
             );
           })}
+        </div>
+
+        {/* Full-width Logo Section */}
+        <div className="pt-16 mt-16 border-t border-[#023020]/10">
+          <p 
+            className="text-[#023020]/40 text-[9px] tracking-[0.3em] uppercase mb-16 text-center font-medium"
+            style={{ fontFamily: "'Montserrat', sans-serif" }}
+          >
+            In Association With
+          </p>
+          
+          <div className="flex flex-wrap items-center justify-center gap-10 md:gap-15 lg:gap-8 opacity-90 px-4">
+            {companyLogos.map((logo, index) => (
+              <img
+                key={index}
+                src={logo.src}
+                alt={logo.name}
+                onClick={scrollToProperties} // 🚀 Click කළාම Scroll වෙන Function එක දැම්මා
+                className="h-32 sm:h-40 md:h-48 lg:h-60 w-auto max-w-[180px] sm:max-w-[220px] lg:max-w-[250px] object-contain transition-transform duration-500 hover:scale-105 cursor-pointer" // 🚀 cursor-pointer එක දැම්මා
+              />
+            ))}
+          </div>
         </div>
         
       </div>

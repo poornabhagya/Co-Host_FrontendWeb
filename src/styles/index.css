@@ -5,3 +5,7 @@
 html {
   scroll-snap-type: y proximity;
 }
+
+.react-datepicker-popper {
+  z-index: 99999 !important; 
+}
