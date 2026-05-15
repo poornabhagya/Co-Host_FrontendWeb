@@ -5,24 +5,59 @@ export function Preloader() {
   const [fadeOut, setFadeOut] = useState(false);
 
   useEffect(() => {
+    let isMounted = true;
+
     // 🚀 Loader එක අයින් කරන Function එක
     const hideLoader = () => {
-      setFadeOut(true); // මුලින්ම Fade out වෙන්න පටන් ගන්නවා
-      setTimeout(() => setIsLoading(false), 800); // Fade out වෙලා ඉවර වුණාම සම්පූර්ණයෙන්ම අයින් කරනවා
+      if (!isMounted) return;
+      setFadeOut(true);
+      setTimeout(() => {
+        if (isMounted) setIsLoading(false);
+      }, 800);
     };
 
-    // 🚀 සයිට් එකේ ඔක්කොම ලෝඩ් වෙලාද බලනවා
+    // 🚀 Images සහ Videos ඔක්කොම ලෝඩ් වෙලාද බලන Function එක
+    const checkMediaAndHide = () => {
+      const images = Array.from(document.images);
+      const videos = Array.from(document.querySelectorAll("video"));
+
+      // Images ලෝඩ් වෙනකම් බලන් ඉන්නවා
+      const imagePromises = images.map((img) => {
+        if (img.complete) return Promise.resolve();
+        return new Promise((resolve) => {
+          img.onload = resolve;
+          img.onerror = resolve; // Error ආවත් හිර වෙන්නෙ නැතුව ඉස්සරහට යන්න
+        });
+      });
+
+      // Videos (Background videos) ප්ලේ කරන්න පුළුවන් මට්ටමට එනකම් බලන් ඉන්නවා
+      const videoPromises = videos.map((vid) => {
+        if (vid.readyState >= 3) return Promise.resolve(); // 3 = HAVE_FUTURE_DATA
+        return new Promise((resolve) => {
+          vid.oncanplaythrough = resolve;
+          vid.onerror = resolve;
+        });
+      });
+
+      // ඔක්කොම Media ලෝඩ් වුණාට පස්සේ Loader එක අයින් කරනවා
+      Promise.all([...imagePromises, ...videoPromises]).then(() => {
+        hideLoader();
+      });
+    };
+
+    // සයිට් එකේ Initial DOM එක රෙඩි නම් Media චෙක් කරනවා
     if (document.readyState === "complete") {
-      hideLoader();
+      checkMediaAndHide();
     } else {
-      window.addEventListener("load", hideLoader);
+      window.addEventListener("load", checkMediaAndHide);
     }
 
-    // 🚀 Fallback: මොනවා හරි හිර වුණොත්, තත්පර 3කින් කොහොමත් ලෝඩර් එක අයින් කරනවා (සයිට් එක හිර වෙන එක නවත්තන්න)
-    const fallbackTimer = setTimeout(hideLoader, 3000);
+    // 🚀 Fallback: ලොකු වීඩියෝ එකක් නිසා සයිට් එක හිර වුණොත්, තත්පර 8කින් අනිවාර්යයෙන් අයින් කරනවා
+    const fallbackTimer = setTimeout(hideLoader, 8000);
 
     return () => {
-      window.removeEventListener("load", hideLoader);
+      isMounted = false;
+      window.removeEventListener("load", checkMediaAndHide);
       clearTimeout(fallbackTimer);
     };
   }, []);
@@ -35,14 +70,12 @@ export function Preloader() {
         fadeOut ? "opacity-0" : "opacity-100"
       }`}
     >
-      {/* 🚀 ලෝගෝ එක (මේක ලාවට පත්තු වෙනවා වගේ පේන්න animate-pulse දාලා තියෙන්නේ) */}
       <img 
         src="./logo.png" 
         alt="Co-Host Ceylon" 
         className="h-20 sm:h-28 mb-8 animate-pulse object-contain" 
       />
       
-      {/* 🚀 Loading Wheel එක (Beige පාටින් කැරකෙන රවුම) */}
       <div className="relative flex justify-center items-center">
         <div className="absolute w-12 h-12 border-2 border-[#F5F5DC]/10 rounded-full"></div>
         <div className="w-12 h-12 border-2 border-transparent border-t-[#F5F5DC] rounded-full animate-spin"></div>
