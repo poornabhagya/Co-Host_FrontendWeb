@@ -213,20 +213,23 @@ export function Insights() {
         {/* Full-width Logo Section */}
         <div className="pt-16 mt-16 border-t border-[#023020]/10">
           <p 
-            className="text-[#023020]/40 text-[9px] tracking-[0.3em] uppercase mb-16 text-center font-medium"
+            className="text-[#023020]/40 text-[9px] tracking-[0.3em] uppercase mb-12 text-center font-medium"
             style={{ fontFamily: "'Montserrat', sans-serif" }}
           >
             In Association With
           </p>
           
-          <div className="flex flex-wrap items-center justify-center gap-10 md:gap-15 lg:gap-8 opacity-90 px-4">
+          {/* 🚀 max-w-5xl දැම්මා සේරම එකට මැදට වෙලා ලස්සනට පේන්න. 
+              gap-x (හරහට) ගොඩක් අඩු කරලා, gap-y (පල්ලෙහාට) ගානට දුන්නා */}
+          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-8 md:gap-x-8 md:gap-y-12 max-w-5xl mx-auto px-4 opacity-90">
             {companyLogos.map((logo, index) => (
               <img
                 key={index}
                 src={logo.src}
                 alt={logo.name}
-                onClick={scrollToProperties} // 🚀 Click කළාම Scroll වෙන Function එක දැම්මා
-                className="h-32 sm:h-40 md:h-48 lg:h-60 w-auto max-w-[180px] sm:max-w-[220px] lg:max-w-[250px] object-contain transition-transform duration-500 hover:scale-105 cursor-pointer" // 🚀 cursor-pointer එක දැම්මා
+                onClick={scrollToProperties} 
+                // 🚀 පළල (w) ටිකක් අඩු කරලා, උස (h) ඒ ගානටම තිබ්බා. එතකොට ලෝගෝ ටික පට්ටෙට ළං වෙනවා!
+                className="w-32 h-28 sm:w-36 sm:h-32 md:w-44 md:h-36 lg:w-48 lg:h-44 object-contain transition-transform duration-500 hover:scale-105 cursor-pointer" 
               />
             ))}
           </div>
