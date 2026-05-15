@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { MapPin, Mail, Phone, Send, CheckCircle } from "lucide-react";
+import { MapPin, Mail, Phone, Send, CheckCircle, Check } from "lucide-react";
 import emailjs from "@emailjs/browser";
 
 type FormData = {
@@ -37,16 +37,28 @@ export function Contact() {
     if (!formRef.current) return;
     setLoading(true);
 
-    const serviceID = "service_qxc03w7"; 
-    const templateID = "template_7kvksyo"; 
-    const publicKey = "t6GvIYifrPC7L7ohR"; 
+    // 🚀 ඔයාගේ අලුත් EmailJS Account එකේ IDs මෙතනට දාන්න
+    const serviceID = "service_wn87x5p"; 
+    const templateID = "template_cyz7hdj"; 
+    const publicKey = "XQtQqbXWlJqLeM7ys"; 
+
+    // Template එකේ variables වලට හරියටම මැච් වෙන්න Params හදාගමු
+    const templateParams = {
+      name: form.from_name,
+      email: form.reply_to,
+      phone: form.phone_number,
+      property_type: form.property_type,
+      location: form.location,
+      message: form.message,
+      time: new Date().toLocaleString(),
+    };
 
     emailjs
-      .sendForm(serviceID, templateID, formRef.current, publicKey)
+      .send(serviceID, templateID, templateParams, publicKey)
       .then(
         () => {
           setLoading(false);
-          setSubmitted(true);
+          setSubmitted(true); // 🚀 මේකෙන් අර luxury success screen එක පෙන්වනවා
           setForm(initialForm);
         },
         (error) => {
@@ -58,10 +70,10 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="relative py-28 lg:py-36 overflow-hidden">
-      <div className="absolute inset-0" style={{ background: "rgba(2,48,32,0.88)" }} />
+    <section id="contact" className="relative py-28 lg:py-36 overflow-hidden bg-[#023020]">
+      <div className="absolute inset-0 opacity-90" style={{ background: "rgba(2,48,32,0.88)" }} />
+      
       <div className="relative z-10 max-w-screen-xl mx-auto px-6">
-        
         {/* Header */}
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-4 mb-6">
@@ -79,9 +91,9 @@ export function Contact() {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-5 gap-0 max-w-5xl mx-auto">
-          {/* Contact Info */}
-          <div className="lg:col-span-2 p-10 flex flex-col justify-between" style={{ background: "rgba(245,245,220,0.06)", backdropFilter: "blur(8px)" }}>
+        <div className="grid lg:grid-cols-5 gap-0 max-w-5xl mx-auto shadow-2xl overflow-hidden rounded-sm">
+          {/* Contact Info Side */}
+          <div className="lg:col-span-2 p-10 flex flex-col justify-between border-r border-[#F5F5DC]/10" style={{ background: "rgba(245,245,220,0.06)", backdropFilter: "blur(12px)" }}>
             <div>
               <h3 className="text-[#F5F5DC] mb-8" style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.3rem", fontWeight: 400 }}>
                 Our Office
@@ -115,37 +127,46 @@ export function Contact() {
             </div>
           </div>
 
-          {/* Form */}
+          {/* Form Side / Luxury Success Side */}
           <div className="lg:col-span-3 p-10" style={{ background: "#F5F5DC" }}>
             {submitted ? (
-              <div className="flex flex-col items-center justify-center h-full text-center py-16">
-                <CheckCircle size={48} className="text-[#023020] mb-6" strokeWidth={1.2} />
-                <h3 className="text-[#023020] mb-3" style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.5rem", fontWeight: 400 }}>Thank You</h3>
-                <p className="text-[#333]/60 max-w-xs" style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "0.85rem", lineHeight: 1.8 }}>
-                  Your enquiry has been received. A Co-Host Ceylon strategist will be in touch within 24 hours.
+              // 🚀 --- LUXURY SUCCESS UI ---
+              <div className="flex flex-col items-center justify-center h-full text-center py-16 animate-in fade-in zoom-in duration-700">
+                <div className="w-20 h-20 bg-[#023020] rounded-full flex items-center justify-center shadow-xl mb-8">
+                  <Check size={40} className="text-[#F5F5DC]" />
+                </div>
+                <h3 className="text-[#023020] mb-4" style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.8rem", fontWeight: 400 }}>Message Received</h3>
+                <p className="text-[#023020]/70 max-w-xs mx-auto mb-8" style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "0.9rem", lineHeight: 1.8 }}>
+                  Thank you for reaching out. A Co-Host Ceylon strategist has been notified and will contact you within 24 hours.
                 </p>
+                <button 
+                  onClick={() => setSubmitted(false)}
+                  className="px-10 py-3 border border-[#023020] text-[#023020] uppercase tracking-widest text-[10px] font-bold hover:bg-[#023020] hover:text-[#F5F5DC] transition-all duration-300"
+                >
+                  Send Another
+                </button>
               </div>
             ) : (
               <form ref={formRef} onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div>
-                    <label className="block text-[#023020]/60 text-[10px] tracking-[0.2em] uppercase mb-2" style={{ fontFamily: "'Montserrat', sans-serif" }}>Full Name *</label>
-                    <input type="text" name="from_name" required value={form.from_name} onChange={handleChange} className="w-full bg-transparent border-b border-[#023020]/20 focus:border-[#023020] outline-none py-2 text-[#023020] text-sm transition-colors duration-300" style={{ fontFamily: "'Montserrat', sans-serif" }} placeholder="Your full name" />
+                    <label className="block text-[#023020]/60 text-[10px] tracking-[0.2em] uppercase mb-2">Full Name *</label>
+                    <input type="text" name="from_name" required value={form.from_name} onChange={handleChange} className="w-full bg-transparent border-b border-[#023020]/20 focus:border-[#023020] outline-none py-2 text-[#023020] text-sm transition-colors duration-300 placeholder:text-[#023020]/30" placeholder="Your full name" />
                   </div>
                   <div>
-                    <label className="block text-[#023020]/60 text-[10px] tracking-[0.2em] uppercase mb-2" style={{ fontFamily: "'Montserrat', sans-serif" }}>Email Address *</label>
-                    <input type="email" name="reply_to" required value={form.reply_to} onChange={handleChange} className="w-full bg-transparent border-b border-[#023020]/20 focus:border-[#023020] outline-none py-2 text-[#023020] text-sm transition-colors duration-300" style={{ fontFamily: "'Montserrat', sans-serif" }} placeholder="your@email.com" />
+                    <label className="block text-[#023020]/60 text-[10px] tracking-[0.2em] uppercase mb-2">Email Address *</label>
+                    <input type="email" name="reply_to" required value={form.reply_to} onChange={handleChange} className="w-full bg-transparent border-b border-[#023020]/20 focus:border-[#023020] outline-none py-2 text-[#023020] text-sm transition-colors duration-300 placeholder:text-[#023020]/30" placeholder="your@email.com" />
                   </div>
                 </div>
 
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div>
-                    <label className="block text-[#023020]/60 text-[10px] tracking-[0.2em] uppercase mb-2" style={{ fontFamily: "'Montserrat', sans-serif" }}>Phone Number</label>
-                    <input type="tel" name="phone_number" value={form.phone_number} onChange={handleChange} className="w-full bg-transparent border-b border-[#023020]/20 focus:border-[#023020] outline-none py-2 text-[#023020] text-sm transition-colors duration-300" style={{ fontFamily: "'Montserrat', sans-serif" }} placeholder="+94 ..." />
+                    <label className="block text-[#023020]/60 text-[10px] tracking-[0.2em] uppercase mb-2">Phone Number</label>
+                    <input type="tel" name="phone_number" value={form.phone_number} onChange={handleChange} className="w-full bg-transparent border-b border-[#023020]/20 focus:border-[#023020] outline-none py-2 text-[#023020] text-sm transition-colors duration-300 placeholder:text-[#023020]/30" placeholder="+94 ..." />
                   </div>
                   <div>
-                    <label className="block text-[#023020]/60 text-[10px] tracking-[0.2em] uppercase mb-2" style={{ fontFamily: "'Montserrat', sans-serif" }}>Property Type</label>
-                    <select name="property_type" value={form.property_type} onChange={handleChange} className="w-full bg-transparent border-b border-[#023020]/20 focus:border-[#023020] outline-none py-2 text-[#023020] text-sm transition-colors duration-300" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                    <label className="block text-[#023020]/60 text-[10px] tracking-[0.2em] uppercase mb-2">Property Type</label>
+                    <select name="property_type" value={form.property_type} onChange={handleChange} className="w-full bg-transparent border-b border-[#023020]/20 focus:border-[#023020] outline-none py-2 text-[#023020] text-sm transition-colors duration-300 cursor-pointer">
                       <option value="">Select type...</option>
                       <option value="luxury-villa">Luxury Villa</option>
                       <option value="boutique-hotel">Boutique Hotel</option>
@@ -157,21 +178,21 @@ export function Contact() {
                 </div>
 
                 <div>
-                  <label className="block text-[#023020]/60 text-[10px] tracking-[0.2em] uppercase mb-2" style={{ fontFamily: "'Montserrat', sans-serif" }}>Property Location</label>
-                  <input type="text" name="location" value={form.location} onChange={handleChange} className="w-full bg-transparent border-b border-[#023020]/20 focus:border-[#023020] outline-none py-2 text-[#023020] text-sm transition-colors duration-300" style={{ fontFamily: "'Montserrat', sans-serif" }} placeholder="e.g. Galle, Mirissa, Ella..." />
+                  <label className="block text-[#023020]/60 text-[10px] tracking-[0.2em] uppercase mb-2">Property Location</label>
+                  <input type="text" name="location" value={form.location} onChange={handleChange} className="w-full bg-transparent border-b border-[#023020]/20 focus:border-[#023020] outline-none py-2 text-[#023020] text-sm transition-colors duration-300 placeholder:text-[#023020]/30" placeholder="e.g. Galle, Mirissa, Ella..." />
                 </div>
 
                 <div>
-                  <label className="block text-[#023020]/60 text-[10px] tracking-[0.2em] uppercase mb-2" style={{ fontFamily: "'Montserrat', sans-serif" }}>Tell Us About Your Property *</label>
-                  <textarea name="message" required rows={4} value={form.message} onChange={handleChange} className="w-full bg-transparent border-b border-[#023020]/20 focus:border-[#023020] outline-none py-2 text-[#023020] text-sm transition-colors duration-300 resize-none" style={{ fontFamily: "'Montserrat', sans-serif" }} placeholder="Share details about your property, current challenges, and your goals..." />
+                  <label className="block text-[#023020]/60 text-[10px] tracking-[0.2em] uppercase mb-2">Tell Us About Your Property *</label>
+                  <textarea name="message" required rows={4} value={form.message} onChange={handleChange} className="w-full bg-transparent border-b border-[#023020]/20 focus:border-[#023020] outline-none py-2 text-[#023020] text-sm transition-colors duration-300 resize-none placeholder:text-[#023020]/30" placeholder="Share details about your property, current challenges, and your goals..." />
                 </div>
 
                 <div className="pt-4">
-                  <button type="submit" disabled={loading} className="flex items-center gap-3 px-10 py-4 bg-[#023020] text-[#F5F5DC] text-xs tracking-[0.2em] uppercase hover:bg-[#023020]/80 transition-all duration-300 disabled:opacity-60" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                  <button type="submit" disabled={loading} className="group relative flex items-center gap-3 px-10 py-4 bg-[#023020] text-[#F5F5DC] text-xs tracking-[0.2em] uppercase hover:bg-[#023020]/90 transition-all duration-300 disabled:opacity-60 overflow-hidden">
                     {loading ? (
-                      <><span className="w-3 h-3 border border-[#F5F5DC]/30 border-t-[#F5F5DC] rounded-full animate-spin" /> Sending...</>
+                      <><span className="w-3 h-3 border-2 border-[#F5F5DC]/30 border-t-[#F5F5DC] rounded-full animate-spin" /> Sending...</>
                     ) : (
-                      <>Schedule Consultation <Send size={12} /></>
+                      <>Schedule Consultation <Send size={12} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" /></>
                     )}
                   </button>
                 </div>
