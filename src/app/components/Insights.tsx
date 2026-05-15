@@ -1,5 +1,4 @@
 import { Camera, Building2, Sparkles, Compass } from "lucide-react";
-import { Link } from "react-router-dom"; 
 
 const PHOTO_IMG = "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1080&q=80";
 const REAL_ESTATE_IMG = "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1080&q=80";
@@ -184,23 +183,6 @@ export function Insights() {
                         {item.tagline} 
                       </p>
 
-                      {item.link.startsWith("/") ? (
-                        <Link 
-                          to={item.link}
-                          className="inline-flex items-center gap-2 text-[10px] tracking-[0.2em] uppercase font-sans text-[#F5F5DC] hover:text-white transition-colors mt-4 group/btn"
-                        >
-                          <span className="border-b border-[#F5F5DC]/50 pb-0.5 group-hover/btn:border-white transition-colors drop-shadow-sm">Learn More</span>
-                          <span className="text-xs transform group-hover/btn:translate-x-1 transition-transform drop-shadow-sm">→</span>
-                        </Link>
-                      ) : (
-                        <a 
-                          href={item.link || "#"}
-                          className="inline-flex items-center gap-2 text-[10px] tracking-[0.2em] uppercase font-sans text-[#F5F5DC] hover:text-white transition-colors mt-4 group/btn"
-                        >
-                          <span className="border-b border-[#F5F5DC]/50 pb-0.5 group-hover/btn:border-white transition-colors drop-shadow-sm">Learn More</span>
-                          <span className="text-xs transform group-hover/btn:translate-x-1 transition-transform drop-shadow-sm">→</span>
-                        </a>
-                      )}
                     </div>
                   </div>
 

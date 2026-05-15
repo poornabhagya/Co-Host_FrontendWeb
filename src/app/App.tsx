@@ -8,6 +8,7 @@ import { Portfolio } from "./components/Portfolio";
 import { Insights } from "./components/Insights";
 import { Footer } from "./components/Footer"; 
 import { BookingModal } from "./components/BookingModal";
+import { Preloader } from "./components/Preloader";
 
 export default function App() {
   const location = useLocation();
@@ -33,6 +34,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+      <Preloader />
       <Navigation />
       <Hero />
       <VideoShowcase />

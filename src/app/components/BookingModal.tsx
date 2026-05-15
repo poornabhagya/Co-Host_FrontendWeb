@@ -78,11 +78,11 @@ export function BookingModal() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label className="block text-[#023020]/70 text-[10px] uppercase tracking-widest mb-2 font-sans">Full Name *</label>
-                <input required type="text" name="name" value={form.name} onChange={handleChange} className="w-full bg-transparent border-b border-[#023020]/20 focus:border-[#023020] py-2 outline-none text-sm text-[#023020] font-sans transition-colors" placeholder="John Doe" />
+                <input required type="text" name="name" value={form.name} onChange={handleChange} className="w-full bg-transparent border-b border-[#023020]/20 focus:border-[#023020] py-2 outline-none text-sm text-[#023020] font-sans transition-colors" placeholder="Your Name" />
               </div>
               <div>
                 <label className="block text-[#023020]/70 text-[10px] uppercase tracking-widest mb-2 font-sans">Email Address *</label>
-                <input required type="email" name="email" value={form.email} onChange={handleChange} className="w-full bg-transparent border-b border-[#023020]/20 focus:border-[#023020] py-2 outline-none text-sm text-[#023020] font-sans transition-colors" placeholder="john@example.com" />
+                <input required type="email" name="email" value={form.email} onChange={handleChange} className="w-full bg-transparent border-b border-[#023020]/20 focus:border-[#023020] py-2 outline-none text-sm text-[#023020] font-sans transition-colors" placeholder="your.email@example.com" />
               </div>
             </div>
 

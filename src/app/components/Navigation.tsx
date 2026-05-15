@@ -210,16 +210,30 @@ export function Navigation() {
             ))}
           </ul>
 
-          {/* Contact Us Button */}
-          <div className="mt-12 w-full">
-            {/* 🚀 Changed: "#contact" වෙනුවට "/partnership-services#contact" දැම්මා */}
+          {/* Action Buttons Section */}
+          <div className="mt-12 w-full flex flex-col gap-4">
+            
+            {/* 🚀 අලුතෙන් දැම්ම BOOK NOW Button එක */}
+            <button
+              onClick={() => { 
+                setMobileOpen(false); // මෙනු එක වහනවා
+                window.dispatchEvent(new CustomEvent("openBookingModal")); // Booking Modal එක ඕපන් කරනවා
+              }}
+              className="w-full px-8 py-5 bg-[#F5F5DC] text-[#023020] text-[12px] sm:text-[13px] tracking-[0.15em] uppercase font-bold hover:bg-white transition-all duration-300"
+              style={{ fontFamily: "'Montserrat', sans-serif" }}
+            >
+              Book Now
+            </button>
+
+            {/* Contact Us Button */}
             <button
               onClick={() => handleNavClick("/partnership-services#contact")}
-              className="w-full px-8 py-5 border border-[#F5F5DC]/60 text-[#F5F5DC] text-[12px] sm:text-[13px] tracking-[0.15em] uppercase hover:bg-[#F5F5DC] hover:text-[#023020] transition-all duration-300"
+              className="w-full px-8 py-5 border border-[#F5F5DC]/60 text-[#F5F5DC] text-[12px] sm:text-[13px] tracking-[0.15em] uppercase hover:bg-[#F5F5DC]/10 transition-all duration-300"
               style={{ fontFamily: "'Montserrat', sans-serif" }}
             >
               Contact Us
             </button>
+            
           </div>
           
         </div>

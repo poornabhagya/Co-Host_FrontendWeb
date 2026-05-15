@@ -3,9 +3,18 @@
 @import './theme.css';
 
 html {
-  scroll-snap-type: y proximity;
+  /* 🚀 proximity වෙනුවට mandatory දැම්මා. දැන් අනිවාර්යයෙන්ම මැදට ඇදලා ගන්නවා! */
+  scroll-snap-type: y proximity !important;
+  scroll-behavior: smooth;
 }
 
 .react-datepicker-popper {
   z-index: 99999 !important; 
+}
+
+#root {
+  overflow-x: hidden !important;
+  width: 100%;
+  max-width: 100vw;
+  position: relative;
 }

@@ -1,60 +1,7 @@
-import { useState } from "react";
-import { Search, BarChart2, Map, Rocket, RefreshCw, Camera, Building2, Sparkles, Compass } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Building2, Compass } from "lucide-react";
 
 // ==========================================
-// 1. DATA FOR PARTNERSHIP PROCESS
-// ==========================================
-const steps = [
-  {
-    number: "01",
-    icon: Search,
-    title: "Property Evaluation",
-    subtitle: "Initial Assessment",
-    description: "We begin with a comprehensive evaluation of your property—its location, physical condition, existing performance data, competitive landscape, and owner aspirations. This stage defines the commercial opportunity.",
-    deliverable: "Property Evaluation Report",
-    duration: "Week 1–2",
-  },
-  {
-    number: "02",
-    icon: BarChart2,
-    title: "Performance Audit",
-    subtitle: "Deep Diagnostic",
-    description: "A rigorous audit of your current operations: pricing strategy, channel mix, OTA performance, cost structure, team capability, and guest feedback. We identify gaps and quantify the revenue opportunity.",
-    deliverable: "Performance Audit Document",
-    duration: "Week 2–4",
-  },
-  {
-    number: "03",
-    icon: Map,
-    title: "Strategic Roadmap",
-    subtitle: "Bespoke Growth Plan",
-    description: "We present a tailored Strategic Roadmap—a 12-month growth plan covering pricing, distribution, marketing, operational improvements, and financial targets. This becomes the foundation of our partnership.",
-    deliverable: "12-Month Strategic Roadmap",
-    duration: "Week 4–6",
-  },
-  {
-    number: "04",
-    icon: Rocket,
-    title: "Implementation",
-    subtitle: "Activation & Execution",
-    description: "With your approval, we execute the roadmap: activating channels, implementing pricing models, launching marketing campaigns, conducting staff training, and establishing reporting frameworks.",
-    deliverable: "Full Operational Activation",
-    duration: "Month 2–3",
-  },
-  {
-    number: "05",
-    icon: RefreshCw,
-    title: "Ongoing Optimisation",
-    subtitle: "Continuous Improvement",
-    description: "Hospitality is never static. We continuously monitor performance, adjust strategies in response to market conditions, review financials monthly, and meet quarterly to review the partnership's direction.",
-    deliverable: "Monthly Reports & Quarterly Reviews",
-    duration: "Ongoing",
-  },
-];
-
-// ==========================================
-// 2. DATA FOR 'OTHER' (INSIGHTS) SECTION
+// DATA FOR 'OTHER' (INSIGHTS) SECTION
 // ==========================================
 const REAL_ESTATE_IMG = "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1080&q=80";
 const INSIGHTS_IMG = "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1080&q=80";
@@ -82,10 +29,6 @@ const insightItems = [
 // MAIN COMPONENT
 // ==========================================
 export function PartnershipProcess() {
-  const [activeStep, setActiveStep] = useState(0);
-  const active = steps[activeStep];
-  const StepIcon = active.icon;
-
   return (
     <>
       {/* -------------------------------------- */}
@@ -162,18 +105,6 @@ export function PartnershipProcess() {
                           {item.tagline}
                         </p>
 
-                        {/* Link / Button */}
-                        {item.link.startsWith("/") ? (
-                          <Link to={item.link} className="inline-flex items-center gap-2 text-[11px] tracking-[0.2em] uppercase font-sans text-[#F5F5DC] hover:text-white transition-colors mt-6 group/btn">
-                            <span className="border-b border-[#F5F5DC]/50 pb-0.5 group-hover/btn:border-white transition-colors drop-shadow-sm font-semibold">Learn More</span>
-                            <span className="text-sm transform group-hover/btn:translate-x-1 transition-transform drop-shadow-sm">→</span>
-                          </Link>
-                        ) : (
-                          <a href={item.link || "#"} className="inline-flex items-center gap-2 text-[11px] tracking-[0.2em] uppercase font-sans text-[#F5F5DC] hover:text-white transition-colors mt-6 group/btn">
-                            <span className="border-b border-[#F5F5DC]/50 pb-0.5 group-hover/btn:border-white transition-colors drop-shadow-sm font-semibold">Learn More</span>
-                            <span className="text-sm transform group-hover/btn:translate-x-1 transition-transform drop-shadow-sm">→</span>
-                          </a>
-                        )}
                       </div>
                     </div>
 
