@@ -16,7 +16,7 @@ export function VideoShowcase() {
         playsInline
         controls={false}
       >
-        <source src="/Co-Host_FrontendWeb/video/for_mobile.mp4" type="video/mp4" />
+        <source src="/video/for_mobile.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
@@ -29,7 +29,7 @@ export function VideoShowcase() {
         playsInline
         controls={false}
       >
-        <source src="/Co-Host_FrontendWeb/video/full_screen.mp4" type="video/mp4" />
+        <source src="/video/full_screen.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
