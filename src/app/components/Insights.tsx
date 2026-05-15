@@ -181,7 +181,7 @@ export function Insights() {
                           fontSize: "0.8rem",
                         }}
                       >
-                        {item.tagline}
+                        {item.tagline} 
                       </p>
 
                       {item.link.startsWith("/") ? (
