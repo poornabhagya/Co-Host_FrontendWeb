@@ -3,10 +3,12 @@ import { Services } from "../components/Services";
 import { PartnershipProcess } from "../components/PartnershipProcess"; 
 import { Contact } from "../components/Contact";
 import { Footer } from "../components/Footer"; 
+import { Preloader } from "../components/Preloader";
 
 export function PartnershipServicesPage() {
   return (
     <div className="min-h-screen" style={{ background: "#ffffff", fontFamily: "'Montserrat', sans-serif" }}>
+      <Preloader />
       <Navigation /> 
       
       {/* 🚀 වෙනස් කරපු Hero Section එක (h-screen දාලා Full Screen කළා) */}
