@@ -35,7 +35,7 @@ export function About() {
                 lineHeight: 1.25,
               }}
             >
-              We Offer the Best Collection for Your Relaxation
+              Hospitality Beyond Reservations
             </h2>
 
             <div
@@ -47,13 +47,10 @@ export function About() {
               }}
             >
               <p>
-                Co-Host Ceylon is a boutique hospitality growth partner dedicated
-                exclusively to luxury villas and independent boutique hotels in Sri Lanka.
+                Co Host Ceylon is a boutique hospitality partner specializing in reservations, digital marketing, OTA management, branding, and guest experience development for independent properties.
               </p>
 
-              <p>
-                our core elements are :
-              </p>
+              
             </div>
           </div>
 

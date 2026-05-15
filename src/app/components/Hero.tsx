@@ -34,9 +34,9 @@ export function Hero() {
                 marginTop: "clamp(15rem, 40vh, 42rem)",
               }}
             >
-              Elevating Sri Lanka's Finest Villas
+              Curating Extraordinary Stays  
               
-              <em className="italic">  &amp; </em> Boutique Hotels
+              <em className="italic">  &amp; </em> Experiences
             </h1>
           </div>
         </div>
