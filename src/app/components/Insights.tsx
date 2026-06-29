@@ -1,9 +1,10 @@
-import { Camera, Building2, Sparkles, Compass } from "lucide-react";
+import React from "react";
+import { Calendar, Camera, Handshake, Utensils } from "lucide-react";
 
-const PHOTO_IMG = "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1080&q=80";
-const REAL_ESTATE_IMG = "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1080&q=80";
-const EXPERIENCES_IMG = "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1080&q=80";
-const INSIGHTS_IMG = "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1080&q=80";
+const RESERVATIONS_IMG = "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1080&q=80";
+const MARKETING_IMG = "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1080&q=80";
+const PARTNERSHIPS_IMG = "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1080&q=80";
+const EXPERIENCES_IMG = "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1080&q=80";
 
 const companyLogos = [
   { name: "Property Logo 1", src: `${import.meta.env.BASE_URL}propertyLogos/Artboard%201.png` },
@@ -22,42 +23,36 @@ const companyLogos = [
 
 const insightItems = [
   { 
-    title: "Photo Locations", 
+    title: "Reservations & Distribution", 
+    icon: Calendar, 
+    image: RESERVATIONS_IMG,
+    subtext: "Airbnb • Booking.com • Agoda • Expedia • Direct Bookings",
+    description: "Ensuring your property is visible to the right guests across the right channels."
+  },
+  { 
+    title: "Marketing & Brand Presence", 
     icon: Camera, 
-    link: "/photo-locations",
-    image: PHOTO_IMG,
-    tagline: "Exclusive spaces for brand campaigns.",
-    bullets: ["Pre-wedding photography", "Fashion & brand shoots", "Architectural features"]
+    image: MARKETING_IMG,
+    subtext: "Social Media • Photography • Videography • Advertising",
+    description: "Building a compelling brand that inspires trust and drives enquiries."
   },
   { 
-    title: "Real Estate & Development", 
-    icon: Building2, 
-    link: "#real-estate",
-    image: REAL_ESTATE_IMG,
-    tagline: "Guiding your next luxury investment.",
-    bullets: ["Property sourcing", "Architectural consulting", "Project management"]
+    title: "Travel Trade Partnerships", 
+    icon: Handshake, 
+    image: PARTNERSHIPS_IMG,
+    subtext: "Travel Agents • Tour Operators • DMCs • International Networks",
+    description: "Connecting independent properties with valuable travel industry relationships."
   },
   { 
-    title: "Experiences", 
-    icon: Sparkles, 
-    link: "#experiences",
+    title: "Guest Experience & Growth", 
+    icon: Utensils, 
     image: EXPERIENCES_IMG,
-    tagline: "Curated guest journeys beyond the villa.",
-    bullets: ["Local cultural tours", "Private beachfront dining", "Wellness & spa retreats"]
-  },
-  { 
-    title: "Tours", 
-    icon: Compass, 
-    link: "#", 
-    image: INSIGHTS_IMG,
-    tagline: "Data-driven hospitality intelligence.",
-    bullets: ["Market trends & analysis", "Revenue optimization", "Luxury sector reports"]
+    subtext: "Experiences • Property Positioning • Revenue Strategy • Hospitality Consulting",
+    description: "Helping properties stand out in an increasingly competitive market."
   },
 ];
 
 export function Insights() {
-
-  // 🚀 අලුතෙන් දැම්ම Function එක (Portfolio Section එකට Scroll වෙන්න)
   const scrollToProperties = () => {
     const section = document.getElementById("all-properties");
     if (section) {
@@ -69,121 +64,106 @@ export function Insights() {
     <section
       id="insights"
       className="py-28 lg:py-36"
-      style={{ background: "#F5F5DC" }} 
+      style={{ background: "#F9F6F0" }}
     >
       <div className="max-w-screen-xl mx-auto px-6">
         
         {/* Header */}
-        <div className="grid lg:grid-cols-2 gap-12 mb-16">
+        <div className="grid lg:grid-cols-2 gap-12 mb-16 items-start">
           <div>
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-120 h-px bg-[#023020]/40" />
-            </div>
+            <div className="w-16 h-[1px] bg-[#023020]/40 mb-6" />
             <h2
               className="text-[#023020]"
               style={{
                 fontFamily: "'Playfair Display', serif",
-                fontSize: "clamp(1.8rem, 3vw, 2.8rem)",
+                fontSize: "clamp(2.2rem, 3.5vw, 3.2rem)",
                 fontWeight: 400,
-                lineHeight: 1.25,
+                lineHeight: 1.2,
               }}
             >
-              Experiences
-              <br />
+              Beyond Reservations
             </h2>
           </div>
-          <div className="flex items-end">
+          <div>
             <p
-              className="text-[#333]/60"
+              className="text-[#023020]/70 lg:pt-4"
               style={{
                 fontFamily: "'Montserrat', sans-serif",
-                fontSize: "0.875rem",
-                lineHeight: 1.9,
+                fontSize: "0.95rem",
+                lineHeight: 1.7,
               }}
             >
-              Beyond property management, discover our curated insights, exclusive guest experiences, and tailored real estate solutions designed for Sri Lanka's luxury hospitality sector.
+               We work alongside owners and on-site teams to strengthen visibility, increase bookings, and unlock growth opportunities
             </p>
           </div>
         </div>
 
-        {/* Grid of 4 Premium Image Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+        {/* 🚀 Grid of 4 Premium Aligned Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {insightItems.map((item) => {
             const Icon = item.icon;
             
             return (
               <div
                 key={item.title}
-                className="group relative overflow-hidden rounded-sm cursor-pointer h-[400px] lg:h-[480px] shadow-lg border border-[#023020]/10"
+                className="group relative overflow-hidden shadow-lg h-[480px] lg:h-[540px] flex flex-col justify-end"
               >
                 {/* Background Image */}
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 
-                {/* Dark Green Gradient + Glass Effect on Hover */}
+                {/* 🚀 Updated Green Overlay: Translucency එක අඩු කළා (පින්තූර හොඳට පේන්න) */}
                 <div
-                  className="absolute inset-0 transition-all duration-500 opacity-70 group-hover:opacity-100 group-hover:backdrop-blur-sm z-10 pointer-events-none"
+                  className="absolute inset-0 z-10 pointer-events-none transition-all duration-500 bg-black/10 group-hover:bg-black/20"
                   style={{
-                    background:
-                      "linear-gradient(to top, rgba(2,48,32,0.98) 0%, rgba(2,48,32,0.65) 45%, transparent 100%)",
+                    background: "linear-gradient(to top, rgba(2,48,32,0.95) 0%, rgba(2,48,32,0.6) 50%, rgba(2,48,32,0.1) 80%, transparent 100%)",
                   }}
                 />
 
-                {/* Content Box */}
-                <div className="absolute bottom-0 left-0 right-0 p-6 lg:p-8 z-20 flex flex-col justify-end transition-all duration-500">
+                {/* 🚀 Content Box: Flex column එකක් දාලා content කොටස් ටික සමාන උසකට බෙදුවා */}
+                <div className="relative z-20 p-6 lg:p-7 flex flex-col justify-end h-full w-full text-left">
                   
-                  <div className="transform transition-transform duration-500 group-hover:-translate-y-2">
-                    <div className="flex items-center gap-3 mb-3">
-                      <Icon size={20} className="text-[#F5F5DC]/80" strokeWidth={1.5} />
-                      <div className="h-px bg-[#F5F5DC]/30 flex-grow" />
-                    </div>
+                  {/* Icon Section */}
+                  <div className="mb-3 flex items-center">
+                    <Icon size={22} strokeWidth={1.2} className="text-[#C8A97E]" />
+                  </div>
+
+                  {/* Title Section (Fixed height for perfect alignment) */}
+                  <div className="min-h-[4rem] flex items-end mb-2">
                     <h3
-                      className="text-[#F5F5DC] drop-shadow-md flex items-start"
+                      className="text-white text-left w-full"
                       style={{
                         fontFamily: "'Playfair Display', serif",
-                        fontSize: "1.4rem",
+                        fontSize: "1.35rem",
                         fontWeight: 400,
                         lineHeight: 1.3,
-                        minHeight: "3.8rem",
                       }}
                     >
                       {item.title}
                     </h3>
                   </div>
 
-                  <div className="grid grid-rows-[0fr] opacity-0 group-hover:grid-rows-[1fr] group-hover:opacity-100 transition-all duration-500 ease-in-out">
-                    <div className="overflow-hidden">
-                      <ul className="mt-2 space-y-2 mb-4">
-                        {item.bullets.map((bullet, idx) => (
-                          <li
-                            key={idx}
-                            className="flex items-start gap-2 text-[#F5F5DC]/80"
-                            style={{
-                              fontFamily: "'Montserrat', sans-serif",
-                              fontSize: "0.75rem",
-                              lineHeight: 1.5,
-                            }}
-                          >
-                            <span className="w-1.5 h-1.5 rounded-full bg-[#F5F5DC]/40 flex-shrink-0 mt-1.5" />
-                            {bullet}
-                          </li>
-                        ))}
-                      </ul>
-                      
-                      <p
-                        className="text-[#F5F5DC]/50 italic border-t border-[#F5F5DC]/20 pt-3"
-                        style={{
-                          fontFamily: "'Playfair Display', serif",
-                          fontSize: "0.8rem",
-                        }}
-                      >
-                        {item.tagline} 
-                      </p>
+                  {/* Subtext Section (Fixed height so bullet items match horizontally) */}
+                  <div className="min-h-[3.2rem] flex items-start mb-4">
+                    <p 
+                      className="text-[#C8A97E] text-[10.5px] uppercase tracking-wider font-semibold leading-relaxed text-left w-full"
+                      style={{ fontFamily: "'Montserrat', sans-serif" }}
+                    >
+                      {item.subtext}
+                    </p>
+                  </div>
 
-                    </div>
+                  {/* Description Section (Perfectly aligned at the bottom) */}
+                  <div className="border-t border-white/10 pt-4 min-h-[4.5rem] flex items-start">
+                    <p 
+                      className="text-white/75 text-[12px] leading-relaxed text-left w-full"
+                      style={{ fontFamily: "'Montserrat', sans-serif" }}
+                    >
+                      {item.description}
+                    </p>
                   </div>
 
                 </div>
@@ -192,30 +172,7 @@ export function Insights() {
           })}
         </div>
 
-        {/* Full-width Logo Section */}
-        <div className="pt-16 mt-16 border-t border-[#023020]/10">
-          <p 
-            className="text-[#023020]/40 text-[9px] tracking-[0.3em] uppercase mb-12 text-center font-medium"
-            style={{ fontFamily: "'Montserrat', sans-serif" }}
-          >
-            In Association With
-          </p>
-          
-          {/* 🚀 max-w-5xl දැම්මා සේරම එකට මැදට වෙලා ලස්සනට පේන්න. 
-              gap-x (හරහට) ගොඩක් අඩු කරලා, gap-y (පල්ලෙහාට) ගානට දුන්නා */}
-          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-8 md:gap-x-8 md:gap-y-12 max-w-5xl mx-auto px-4 opacity-90">
-            {companyLogos.map((logo, index) => (
-              <img
-                key={index}
-                src={logo.src}
-                alt={logo.name}
-                onClick={scrollToProperties} 
-                // 🚀 පළල (w) ටිකක් අඩු කරලා, උස (h) ඒ ගානටම තිබ්බා. එතකොට ලෝගෝ ටික පට්ටෙට ළං වෙනවා!
-                className="w-32 h-28 sm:w-36 sm:h-32 md:w-44 md:h-36 lg:w-48 lg:h-44 object-contain transition-transform duration-500 hover:scale-105 cursor-pointer" 
-              />
-            ))}
-          </div>
-        </div>
+        
         
       </div>
     </section>

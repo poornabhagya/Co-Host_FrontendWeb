@@ -32,7 +32,7 @@ export function Footer() {
               Navigation
             </p>
             <ul className="space-y-2">
-              {["About", "Partnership Services", "Collection", "Experiences","Contact"].map(
+              {["About", "Partnership Services", "Our Portfolio", "Beyond Reservations","Contact"].map(
                 (item) => (
                   <li key={item}>
                     <button
