@@ -1,10 +1,11 @@
 import React from "react";
 import { Calendar, Camera, Handshake, Utensils } from "lucide-react";
 
-const RESERVATIONS_IMG = "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1080&q=80";
-const MARKETING_IMG = "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1080&q=80";
-const PARTNERSHIPS_IMG = "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1080&q=80";
-const EXPERIENCES_IMG = "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1080&q=80";
+//  Local AI Generated Images Path Configuration
+const RESERVATIONS_IMG = `${import.meta.env.BASE_URL}beyondReservationsImgs/BR1.png`;
+const MARKETING_IMG = `${import.meta.env.BASE_URL}beyondReservationsImgs/BR2.png`;
+const PARTNERSHIPS_IMG = `${import.meta.env.BASE_URL}beyondReservationsImgs/BR3.png`;
+const EXPERIENCES_IMG = `${import.meta.env.BASE_URL}beyondReservationsImgs/BR4.png`;
 
 const companyLogos = [
   { name: "Property Logo 1", src: `${import.meta.env.BASE_URL}propertyLogos/Artboard%201.png` },
@@ -98,7 +99,7 @@ export function Insights() {
           </div>
         </div>
 
-        {/* 🚀 Grid of 4 Premium Aligned Cards */}
+        {/*  Grid of 4 Premium Aligned Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {insightItems.map((item) => {
             const Icon = item.icon;
@@ -106,7 +107,7 @@ export function Insights() {
             return (
               <div
                 key={item.title}
-                className="group relative overflow-hidden shadow-lg h-[480px] lg:h-[540px] flex flex-col justify-end"
+                className="group relative overflow-hidden shadow-lg h-[480px] lg:h-[540px] flex flex-col justify-end rounded-sm"
               >
                 {/* Background Image */}
                 <img
@@ -115,7 +116,7 @@ export function Insights() {
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 
-                {/* 🚀 Updated Green Overlay: Translucency එක අඩු කළා (පින්තූර හොඳට පේන්න) */}
+                {/*  Updated Green Overlay: Translucency එක අඩු කළා (පින්තූර හොඳට පේන්න) */}
                 <div
                   className="absolute inset-0 z-10 pointer-events-none transition-all duration-500 bg-black/10 group-hover:bg-black/20"
                   style={{
@@ -123,7 +124,7 @@ export function Insights() {
                   }}
                 />
 
-                {/* 🚀 Content Box: Flex column එකක් දාලා content කොටස් ටික සමාන උසකට බෙදුවා */}
+                {/*  Content Box: Flex column එකක් දාලා content කොටස් ටික සමාන උසකට බෙදුවා */}
                 <div className="relative z-20 p-6 lg:p-7 flex flex-col justify-end h-full w-full text-left">
                   
                   {/* Icon Section */}
@@ -171,8 +172,6 @@ export function Insights() {
             );
           })}
         </div>
-
-        
         
       </div>
     </section>

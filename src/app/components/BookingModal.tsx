@@ -1,24 +1,24 @@
 import { useState, useEffect } from "react";
-import { X, Calendar as CalendarIcon, Check } from "lucide-react"; // Check icon එකත් ගත්තා
+import { X, Calendar as CalendarIcon, Check } from "lucide-react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import emailjs from "@emailjs/browser";
 
 const properties = [
-  "Luna Laguna", "Lakeside Retreat Malsiripura", "Margossa Residence Kandy", 
-  "Casa Heliconia", "Villa Morawala", "Camellia Residencies", "SinhaGiri Mansion", 
-  "Villa Vista Haputale", "Boutique 87", "Sihina", "Camellia Ranch", 
-  "Treasure Rock", "Liv - Unawatuna", "Lotus & Moon", "Heuvel Villa Kandy"
+  "Luna Laguna - Kalpitiya", "Lakeside Retreat - Malsiripura", "Margossa Residence - Kandy", 
+  "Casa Heliconia - Kaleliya", "Villa Morawala - Negombo", "Camellia Residencies - Colombo", "SinhaGiri Mansion - Nuwara Eliya", 
+  "Villa Vista - Haputale", "Boutique 87 - Bentota", "Sihina - Kosgoda", "Camellia Ranch - Baddegama", 
+  "Treasure Rock - Kirinda", "Liv - Unawatuna", "Lotus & Moon - Habaraduwa", "Heuvel Villa - Kandy"
 ];
 
 export function BookingModal() {
   const [isOpen, setIsOpen] = useState(false);
   const [isSending, setIsSending] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false); // 🚀 Success state එකක් හැදුවා
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const [form, setForm] = useState({
     name: "", email: "", phone: "", property: "", 
-    guests: "", rooms: "", promo: ""
+    guests: "", rooms: "" // 👈 'promo' එක මෙතනින් අයින් කළා
   });
   
   const [checkInDate, setCheckInDate] = useState<Date | null>(null);
@@ -27,7 +27,7 @@ export function BookingModal() {
   useEffect(() => {
     const handleOpen = (e: any) => {
       setIsOpen(true);
-      setIsSuccess(false); // Modal එක ඇරෙන හැම පාරම Success screen එක reset කරනවා
+      setIsSuccess(false);
       if (e.detail?.property) {
         setForm(prev => ({ ...prev, property: e.detail.property }));
       }
@@ -61,22 +61,20 @@ export function BookingModal() {
       check_out_date: checkOutDate.toLocaleDateString(),
       guests_count: form.guests,
       rooms_count: form.rooms || "1",
-      promo_code: form.promo || "N/A",
+      promo_code: "N/A", // 👈 EmailJS එක බිඳෙන්නේ නැති වෙන්න මෙතනට කෙලින්ම "N/A" දුන්නා මචං
     };
 
-    // 🚀 EmailJS එකට යවමු (අර IDs ටික මෙතනට දාන්න)
     emailjs.send(
-      'service_5mkcbc1', // Your Service ID
-      'template_nyv954c', // Your Template ID (මේක ඔයාගේ Template Settings වලින් බලන්න)
+      'service_5mkcbc1', 
+      'template_nyv954c', 
       templateParams,
-      'TEZ0W1KnsoiILH1I_' // Your Public Key (Account section එකෙන් බලන්න)
+      'TEZ0W1KnsoiILH1I_' 
     )
     .then((response) => {
        console.log('SUCCESS!', response.status, response.text);
-       setIsSuccess(true); // 🚀 Alert එක වෙනුවට Success UI එක පෙන්වනවා
+       setIsSuccess(true);
        
-       // Form එක reset කරමු
-       setForm({ name: "", email: "", phone: "", property: "", guests: "", rooms: "", promo: "" });
+       setForm({ name: "", email: "", phone: "", property: "", guests: "", rooms: "" });
        setCheckInDate(null);
        setCheckOutDate(null);
     })
@@ -106,7 +104,7 @@ export function BookingModal() {
         </button>
 
         <div className="p-8 md:p-10">
-          {/* 🚀 --- SUCCESS UI SECTION --- */}
+          {/* --- SUCCESS UI SECTION --- */}
           {isSuccess ? (
             <div className="flex flex-col items-center justify-center space-y-6 py-12 animate-in fade-in zoom-in duration-500">
               <div className="w-20 h-20 bg-[#023020] rounded-full flex items-center justify-center shadow-xl">
@@ -204,7 +202,8 @@ export function BookingModal() {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-3 gap-4">
+                {/* 🔴 UPDATED: grid-cols-3 එක grid-cols-2 කරලා Promo Code ඉන්පුට් එක සම්පූර්ණයෙන්ම අයින් කළා */}
+                <div className="grid grid-cols-2 gap-6">
                   <div>
                     <label className="block text-[#023020]/70 text-[10px] uppercase tracking-widest mb-2 font-sans">Guests *</label>
                     <input required type="number" min="1" name="guests" value={form.guests} onChange={handleChange} className="w-full bg-transparent border-b border-[#023020]/20 focus:border-[#023020] py-2 outline-none text-sm text-[#023020] font-sans transition-colors" placeholder="0" />
@@ -212,10 +211,6 @@ export function BookingModal() {
                   <div>
                     <label className="block text-[#023020]/70 text-[10px] uppercase tracking-widest mb-2 font-sans">Rooms</label>
                     <input type="number" min="1" name="rooms" value={form.rooms} onChange={handleChange} className="w-full bg-transparent border-b border-[#023020]/20 focus:border-[#023020] py-2 outline-none text-sm text-[#023020] font-sans transition-colors" placeholder="1" />
-                  </div>
-                  <div>
-                    <label className="block text-[#023020]/70 text-[10px] uppercase tracking-widest mb-2 font-sans">Promo Code</label>
-                    <input type="text" name="promo" value={form.promo} onChange={handleChange} className="w-full bg-transparent border-b border-[#023020]/20 focus:border-[#023020] py-2 outline-none text-sm text-[#023020] font-sans transition-colors uppercase" placeholder="CODE" />
                   </div>
                 </div>
 

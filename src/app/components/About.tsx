@@ -1,6 +1,6 @@
 const ABOUT_IMAGE = `${import.meta.env.BASE_URL}webpageImg/about.jpg`;
 
-// 🚀 Space එක වෙනුවට %20 දාලා ෆික්ස් කළා. දැන් අනිවාර්යයෙන්ම ලෝගෝ ටික පෙනේවි.
+//  Space එක වෙනුවට %20 දාලා ෆික්ස් කළා. දැන් අනිවාර්යයෙන්ම ලෝගෝ ටික පෙනේවි.
 
 
 export function About() {

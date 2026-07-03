@@ -99,7 +99,7 @@ export function Contact() {
         onClick={(e) => e.stopPropagation()}
       >
         
-        {/* 🚀 🚀 Close Button: මොබයිල් වලදී සුදු පාට වෙලා, ලොකු ස්ක්‍රීන් වලදී (lg:) තද කොළ පාට වෙනවා */}
+        {/*  Close Button: මොබයිල් වලදී සුදු පාට වෙලා, ලොකු ස්ක්‍රීන් වලදී (lg:) තද කොළ පාට වෙනවා */}
         <button 
           onClick={() => { setIsOpen(false); setSubmitted(false); }}
           className="absolute top-4 right-4 text-white hover:scale-110 lg:text-[#023020]/60 lg:hover:text-[#023020] transition-all duration-300 z-50 p-2"
@@ -109,7 +109,7 @@ export function Contact() {
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-0">
           
-          {/* 🟡 🟡 Form Side (Ivory Side): මොබයිල් වලදී order-1 දාලා උඩටම ගත්තා මචං */}
+          {/*  Form Side (Ivory Side): මොබයිල් වලදී order-1 දාලා උඩටම ගත්තා මචං */}
           <div className="lg:col-span-3 p-8 lg:p-12 order-1 lg:order-2" style={{ background: "#F3EEE7" }}>
             
             {submitted ? (
@@ -189,7 +189,7 @@ export function Contact() {
             )}
           </div>
 
-          {/* 🟢 🟢 Contact Info Side (Dark Green Side): මොබයිල් වලදී order-2 දාලා ෆෝම් එකට යටට තල්ලු කලා */}
+          {/*  Contact Info Side (Dark Green Side): මොබයිල් වලදී order-2 දාලා ෆෝම් එකට යටට තල්ලු කලා */}
           <div className="lg:col-span-2 p-8 lg:p-12 flex flex-col justify-between border-t lg:border-t-0 lg:border-r border-[#F5F5DC]/10 bg-black/20 order-2 lg:order-1">
             <div>
               <h3 className="text-[#F5F5DC] mb-6 lg:mb-8" style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.4rem", fontWeight: 400 }}>

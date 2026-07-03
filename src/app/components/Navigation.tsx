@@ -110,7 +110,7 @@ export function Navigation() {
             "none",
         }}
       >
-        {/* 🚀 🚀 FIXED WIDTH: max-w-screen-2xl වෙනුවට max-w-6xl දාලා පළල නියම ගානට බැලන්ස් කළා මචං */}
+        {/*  FIXED WIDTH: max-w-screen-2xl වෙනුවට max-w-6xl දාලා පළල නියම ගානට බැලන්ස් කළා මචං */}
         <div className="max-w-7xl mx-auto px-6 sm:px-8 xl:px-12 py-3 grid grid-cols-3 items-center">
           
           {/* Left: Menu Burger Icon */}
@@ -123,7 +123,7 @@ export function Navigation() {
             </button>
           </div>
 
-          {/* Center: Logo - 🚀 හෙඩර් එකේ උසට ගැලපෙන්න ලෝගෝ එකේ උස නූලක් අඩු කළා මචං */}
+          {/* Center: Logo -  හෙඩර් එකේ උසට ගැලපෙන්න ලෝගෝ එකේ උස නූලක් අඩු කළා මචං */}
           <div className="flex justify-center">
             <button
               onClick={handleLogoClick}

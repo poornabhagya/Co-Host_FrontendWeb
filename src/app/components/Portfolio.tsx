@@ -1,7 +1,7 @@
 "use client";
 import { useState, useRef } from "react";
 
-// 🚀 Property Logos Array
+// Property Logos Array
 const companyLogos = [
   { name: "Property Logo 1", src: `${import.meta.env.BASE_URL}propertyLogos/Artboard%201.png` },
   { name: "Property Logo 2", src: `${import.meta.env.BASE_URL}propertyLogos/Artboard%202.png` },
@@ -19,15 +19,20 @@ const companyLogos = [
   { name: "Property Logo 15", src: `${import.meta.env.BASE_URL}propertyLogos/Artboard%2015.webp` },
   { name: "Property Logo 16", src: `${import.meta.env.BASE_URL}propertyLogos/Artboard%2016.png` },
   { name: "Property Logo 17", src: `${import.meta.env.BASE_URL}propertyLogos/Artboard%2017.webp` },
+  { name: "Property Logo 18", src: `${import.meta.env.BASE_URL}propertyLogos/Artboard%2018.png` },
+  { name: "Property Logo 19", src: `${import.meta.env.BASE_URL}propertyLogos/Artboard%2019.png` },
 ];
 
-// 🚀 Properties Array with Exact Logos Connected
+// Global Distribution Local Asset Variable
+const AgodaLogoPath = `${import.meta.env.BASE_URL}globalDistribution/logo1.png`;
+
+// properties Array with Exact Logos Connected
 const portfolioProperties = [
   { id: 1, name: "Luna Laguna", top: "39.25%", left: "27.5%", category: "Private Villa", description: "A stunning coastal escape offering absolute privacy and tranquil lagoon views.", image: "./propertiesCardImgs/lunaLaguna.jpg", websiteLink: "https://tropicalgardenvillas.com/luna-laguna/", logo: `${import.meta.env.BASE_URL}propertyLogos/Artboard%208.webp` },
   { id: 2, name: "Lakeside Retreat Malsiripura", top: "52.75%", left: "43%", category: "Boutique Hotel", description: "Nestled by a serene lake, offering a perfect blend of nature and luxury.", image: "./propertiesCardImgs/lakeside.jpg", websiteLink: "https://lakesideretreatlk.com/", logo: `${import.meta.env.BASE_URL}propertyLogos/Artboard%2016.png` },
   { id: 3, name: "Margossa Residence Kandy", top: "61.5%", left: "46.75%", category: "Heritage Villa", description: "Colonial charm meets modern tropical luxury in the heart of Kandy.", image: "./propertiesCardImgs/margossaResidence.jpg", websiteLink: "https://www.airbnb.co.uk/rooms/1347809840414743566?source_impression_id=p3_1777884475_P3KuwuxgCxieAufw", logo: `${import.meta.env.BASE_URL}propertyLogos/Artboard%203.png` },
   { id: 4, name: "Casa Heliconia", top: "63.5%", left: "35.5%", category: "Garden Estate", description: "An exotic jungle paradise surrounded by lush tropical vegetation.", image: "./propertiesCardImgs/casaHeliconia.jpg", websiteLink: "https://tropicalgardenvillas.com/casa-heliconia/", logo: `${import.meta.env.BASE_URL}propertyLogos/Artboard%206.webp` },
-  { id: 5, name: "Villa Morawala", top: "63%", left: "27.5%", category: "Beach Villa", description: "Breathtaking ocean views and pristine beaches right at your doorstep.", image: "./propertiesCardImgs/villaMorawala.jpg", websiteLink: "#", logo: `${import.meta.env.BASE_URL}propertyLogos/Artboard%205.png` },
+  { id: 5, name: "Villa Morawala", top: "63%", left: "27.5%", category: "Beach Villa", description: "Breathtaking ocean views and pristine beaches right at your doorstep.", image: "./propertiesCardImgs/villaMorawala.jpg", websiteLink: "#", logo: `${import.meta.env.BASE_URL}propertyLogos/Artboard%2019.png` },
   { id: 6, name: "Camellia Residencies", top: "70.75%", left: "29.25%", category: "Private Villa", description: "Modern luxury living with exceptional access to local attractions.", image: "./propertiesCardImgs/camelliaResidencies.webp", websiteLink: "https://camelliaresidencies.com/", logo: `${import.meta.env.BASE_URL}propertyLogos/Artboard%2011.png` },
   { id: 7, name: "SinhaGiri Mansion", top: "68.5%", left: "51%", category: "Historic Residence", description: "A majestic mansion echoing the grandeur of Sri Lanka's rich history.", image: "./propertiesCardImgs/sinhagiri.jpg", websiteLink: "https://tropicalgardenvillas.com/sinhagiri-mansion/", logo: `${import.meta.env.BASE_URL}propertyLogos/Artboard%2017.webp` },
   { id: 8, name: "Villa Vista Haputale", top: "74.75%", left: "55.5%", category: "Mountain Lodge", description: "Perched high in the misty mountains with panoramic views of the island.", image: "./propertiesCardImgs/villaVista.jpg", websiteLink: "https://tropicalgardenvillas.com/villa-vista/", logo: `${import.meta.env.BASE_URL}propertyLogos/Artboard%2015.webp` },
@@ -37,7 +42,14 @@ const portfolioProperties = [
   { id: 12, name: "Treasure Rock", top: "86.5%", left: "62.75%", category: "Eco Luxury", description: "Immerse yourself in nature without compromising on high-end comfort.", image: "./propertiesCardImgs/treasureRock.jpg", websiteLink: "https://tropicalgardenvillas.com/treasure-rock/", logo: `${import.meta.env.BASE_URL}propertyLogos/Artboard%2014.webp` },
   { id: 13, name: "Liv - Unawatuna", top: "91%", left: "37%", category: "Coastal Villa", description: "Vibrant beachside living in one of Sri Lanka's most iconic bays.", image: "./propertiesCardImgs/liv.jpg", websiteLink: "https://www.airbnb.com/rooms/1573838604856901592?guests=1&adults=1&s=67&unique_share_id=c05b7f93-247b-427a-ab45-39975daa69bc&source_impression_id=p3_1777891661_P3tjon9eGRv3vqtG", logo: `${import.meta.env.BASE_URL}propertyLogos/Artboard%2012.png` },
   { id: 14, name: "Lotus & Moon", top: "92.5%", left: "40.5%", category: "Boutique Hotel", description: "A mystical and calm hideaway perfect for relaxation and rejuvenation.", image: "./propertiesCardImgs/lotus.jpeg", websiteLink: "https://www.airbnb.com/rooms/1530906375827575079?source_impression_id=p3_1777884769_P3hTb6voa9vpkK11", logo: `${import.meta.env.BASE_URL}propertyLogos/Artboard%2010.png` },
-  { id: 15, name: "Heuvel Villa Kandy", top: "63%", left: "50.5%", category: "Boutique Hotel", description: "A mystical and calm hideaway perfect for relaxation and rejuvenation.", image: "./propertiesCardImgs/heuvelKandy.png", websiteLink: "#", logo: `${import.meta.env.BASE_URL}propertyLogos/Artboard%209.png` },
+  { id: 15, name: "Heuvel Villa Kandy", top: "63%", left: "50.5%", category: "Boutique Hotel", description: "A mystical and calm hideaway perfect for relaxation and rejuvenation.", image: "./propertiesCardImgs/heuvelKandy.png", websiteLink: "https://heuvelvillakandy.com/", logo: `${import.meta.env.BASE_URL}propertyLogos/Artboard%2018.png` },
+];
+
+// Updated: Airbnb & Booking on CDN, Agoda on local public path
+const globalChannels = [
+  { name: "Airbnb", src: "https://cdn.jsdelivr.net/gh/edent/SuperTinyIcons/images/svg/airbnb.svg" },
+  { name: "Booking.com", src: "https://upload.wikimedia.org/wikipedia/commons/b/be/Booking.com_logo.svg" },
+  { name: "Agoda", src: AgodaLogoPath }, 
 ];
 
 export function Portfolio() {
@@ -70,12 +82,12 @@ export function Portfolio() {
   };
 
   return (
-    <section id="portfolio" className="scroll-mt-24 py-12 lg:py-14 min-h-screen flex items-center" style={{ background: "#F9F6F0" }}>
-      <div className="max-w-screen-2xl w-full mx-auto px-6 xl:px-12">
+    <section id="portfolio" className="scroll-mt-24 py-12 lg:py-14 min-h-screen flex flex-col justify-center" style={{ background: "#F9F6F0" }}>
+      <div className="max-w-screen-2xl w-full mx-auto px-6 xl:px-12 flex-grow flex flex-col justify-center">
         
         <div className="flex flex-col lg:flex-row gap-10 lg:gap-12 xl:gap-16 items-center lg:items-stretch">
           
-          {/* Left Side: Client's Image Map (🚫 100% UNTOUCHED & PRESERVED) */}
+          {/* Left Side: Client's Image Map */}
           <div className="w-full lg:w-1/2 relative flex items-center justify-center min-h-[450px] lg:min-h-[600px]">
             <div 
               className="absolute inset-0 opacity-[0.30] pointer-events-none" 
@@ -120,7 +132,7 @@ export function Portfolio() {
             </div>
           </div>
 
-          {/* 🚀 Right Side: Text Area + Property Card (Optimized for Laptops & Big Monitors) */}
+          {/* Right Side: Text Area + Property Card */}
           <div className="w-full lg:w-1/2 flex flex-col justify-center xl:pr-6">
             
             {/* Typography Section */}
@@ -132,12 +144,10 @@ export function Portfolio() {
                 </span>
               </div>
               
-              {/* Heading size adjusted for laptops */}
               <h2 className="text-[#023020] font-serif text-3xl lg:text-4xl xl:text-5xl leading-tight mb-3">
                 Properties We <em className="italic"> Represent</em>
               </h2>
               
-              {/* Text size balanced for laptop screens */}
               <p className="text-[#333]/60 text-xs xl:text-sm leading-relaxed mb-4 xl:mb-5 max-w-lg" style={{ fontFamily: "'Montserrat', sans-serif" }}>
                 Co Host Ceylon represents a handpicked portfolio of luxury villas, private estates, and
                 boutique hotels across Sri Lanka. We partner with independent property owners to
@@ -152,7 +162,7 @@ export function Portfolio() {
               </button>
             </div>
 
-            {/* 🚀 Interactive Property Details Card: Height optimized (h-[320px] lg:h-[340px] xl:h-[380px]) */}
+            {/* Interactive Property Details Card */}
             <div className="w-full flex flex-col relative rounded-md shadow-2xl overflow-hidden border border-[#023020]/10 h-[320px] lg:h-[340px] xl:h-[380px] group cursor-pointer">
               
               {/* Navigation Arrows */}
@@ -239,33 +249,21 @@ export function Portfolio() {
                   {property.image ? (
                     <img src={property.image} alt={property.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 relative z-0" />
                   ) : (
-                    <svg className="w-8 h-8 text-[#023020]/30 z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                    <svg className="w-8 h-8 text-[#023020]/30 z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6 downgradea2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
                   )}
 
                   {/* Darken Overlay on Hover */}
                   <div className="absolute inset-0 bg-[#023020]/5 group-hover:bg-black/50 transition-all duration-500 z-10" />
 
-                  {/* Premium Overlay Content */}
-                  <div className="absolute inset-0 z-20 flex flex-col items-center justify-center gap-5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 p-4">
-                    
+                  {/* Premium Overlay Content (Only Logo Centered Now) */}
+                  <div className="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 p-4">
                     {property.logo && (
                       <img 
                         src={property.logo} 
                         alt={`${property.name} Logo`} 
-                        className="h-24 max-h-[50%] w-auto object-contain brightness-0 invert transform scale-95 group-hover:scale-100 transition-all duration-500"
+                        className="h-24 max-h-[60%] w-auto object-contain brightness-0 invert transform scale-95 group-hover:scale-100 transition-all duration-500"
                       />
                     )}
-
-                    {/* 'View Property' Luxury Button */}
-                    <a
-                      href={property.websiteLink !== "#" ? property.websiteLink : undefined}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-5 py-2 border border-white text-white text-[10px] font-bold tracking-widest uppercase bg-white/10 backdrop-blur-sm hover:bg-white hover:text-[#023020] transition-all duration-300 rounded-sm"
-                      onClick={(e) => property.websiteLink === "#" && e.preventDefault()}
-                    >
-                      {property.websiteLink !== "#" ? "View Property" : "Coming Soon"}
-                    </a>
                   </div>
 
                 </div>
@@ -289,7 +287,7 @@ export function Portfolio() {
                       <span className={`border-b pb-0.5 font-bold transition-colors
                         ${property.websiteLink !== "#" ? "border-[#023020]/30" : "border-transparent"}
                       `}>
-                        {property.websiteLink !== "#" ? "Explore" : "Coming Soon"}
+                        {property.websiteLink !== "#" ? "View Property" : "Coming Soon"}
                       </span>
                       {property.websiteLink !== "#" && (
                         <span className="text-xs transform group-hover/bottomBtn:translate-x-1 transition-transform">→</span>
@@ -321,6 +319,32 @@ export function Portfolio() {
               </div>
               <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-[#023020]">Back to Start</span>
             </div>
+          </div>
+        </div>
+
+        {/*  Integrated Global Booking Platforms Section */}
+        <div className="mt-24 pt-12 border-t border-[#023020]/10 text-center w-full max-w-4xl mx-auto">
+          {/* Small Subtitle */}
+          <p className="text-[#023020]/50 text-[10px] tracking-[0.3em] uppercase mb-3" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+            Global Distribution
+          </p>
+          
+          {/* Main Heading */}
+          <h3 className="text-[#023020] text-xl md:text-2xl font-serif mb-8 font-normal">
+            Integrated with Leading Global Platforms
+          </h3>
+
+          {/* Logos Row */}
+          <div className="flex items-center justify-center gap-12 md:gap-20">
+            {globalChannels.map((logo) => (
+              <div key={logo.name} className="h-8 md:h-10 flex items-center justify-center">
+                <img
+                  src={logo.src}
+                  alt={logo.name}
+                  className="h-full w-auto object-contain grayscale opacity-40 hover:opacity-100 hover:grayscale-0 transition-all duration-500 ease-in-out cursor-pointer"
+                />
+              </div>
+            ))}
           </div>
         </div>
 
