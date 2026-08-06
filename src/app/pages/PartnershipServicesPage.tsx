@@ -11,7 +11,7 @@ export function PartnershipServicesPage() {
       <Preloader />
       <Navigation /> 
       
-      {/* 🚀 වෙනස් කරපු Hero Section එක (h-screen දාලා Full Screen කළා) */}
+      {/* වෙනස් කරපු Hero Section එක (h-screen දාලා Full Screen කළා) */}
       <div className="relative w-full h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
         
         {/* Background Image */}

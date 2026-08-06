@@ -9,6 +9,7 @@ import { Insights } from "./components/Insights";
 import { Footer } from "./components/Footer"; 
 import { BookingModal } from "./components/BookingModal";
 import { Preloader } from "./components/Preloader";
+import { Contact } from "./components/Contact";
 
 export default function App() {
   const location = useLocation();
@@ -43,6 +44,7 @@ export default function App() {
       
       <Insights />
       <BookingModal />
+      <Contact />
       <Footer />
     </div>
   );

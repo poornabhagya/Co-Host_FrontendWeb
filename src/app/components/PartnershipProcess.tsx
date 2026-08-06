@@ -62,7 +62,7 @@ export function PartnershipProcess() {
             </div>
           </div>
 
-          {/* 🚀 REDESIGNED: Grid of 2 Premium Image Cards */}
+          {/*  REDESIGNED: Grid of 2 Premium Image Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto">
             {insightItems.map((item) => {
               const Icon = item.icon;

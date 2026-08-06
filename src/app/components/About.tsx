@@ -1,6 +1,6 @@
 const ABOUT_IMAGE = `${import.meta.env.BASE_URL}webpageImg/about.jpg`;
 
-// 🚀 Space එක වෙනුවට %20 දාලා ෆික්ස් කළා. දැන් අනිවාර්යයෙන්ම ලෝගෝ ටික පෙනේවි.
+//  Space එක වෙනුවට %20 දාලා ෆික්ස් කළා. දැන් අනිවාර්යයෙන්ම ලෝගෝ ටික පෙනේවි.
 
 
 export function About() {
@@ -8,7 +8,7 @@ export function About() {
     <section
       id="about"
       className="py-28 lg:py-36"
-      style={{ background: "#F5F5DC" }}
+      style={{ background: "#F9F6F0" }}
     >
       <div className="max-w-screen-xl mx-auto px-6">
         {/* Section label */}
@@ -35,7 +35,7 @@ export function About() {
                 lineHeight: 1.25,
               }}
             >
-              Hospitality Beyond Reservations
+              Where Exceptional Properties Meet Exceptional Hospitality
             </h2>
 
             <div
@@ -47,7 +47,14 @@ export function About() {
               }}
             >
               <p>
-                Co Host Ceylon is a boutique hospitality partner specializing in reservations, digital marketing, OTA management, branding, and guest experience development for independent properties.
+                Co Host Ceylon partners with a handpicked portfolio of luxury villas, private estates, and boutique hotels across Sri Lanka.
+                Every property in our collection is personally selected for its character, quality, and
+                potential.
+              </p>
+              <p>
+                We work alongside property owners to maximise occupancy, unlock revenue potential, and
+                strengthen their property's market presence through reservations management, digital
+                marketing, travel trade partnerships, and guest experience development.
               </p>
 
               

@@ -7,7 +7,7 @@ export function Preloader() {
   useEffect(() => {
     let isMounted = true;
 
-    // 🚀 Loader එක අයින් කරන Function එක
+    //  Loader එක අයින් කරන Function එක
     const hideLoader = () => {
       if (!isMounted) return;
       setFadeOut(true);
@@ -16,7 +16,7 @@ export function Preloader() {
       }, 800);
     };
 
-    // 🚀 Images සහ Videos ඔක්කොම ලෝඩ් වෙලාද බලන Function එක
+    //  Images සහ Videos ඔක්කොම ලෝඩ් වෙලාද බලන Function එක
     const checkMediaAndHide = () => {
       const images = Array.from(document.images);
       const videos = Array.from(document.querySelectorAll("video"));
@@ -52,7 +52,7 @@ export function Preloader() {
       window.addEventListener("load", checkMediaAndHide);
     }
 
-    // 🚀 Fallback: ලොකු වීඩියෝ එකක් නිසා සයිට් එක හිර වුණොත්, තත්පර 8කින් අනිවාර්යයෙන් අයින් කරනවා
+    //  Fallback: ලොකු වීඩියෝ එකක් නිසා සයිට් එක හිර වුණොත්, තත්පර 8කින් අනිවාර්යයෙන් අයින් කරනවා
     const fallbackTimer = setTimeout(hideLoader, 8000);
 
     return () => {
