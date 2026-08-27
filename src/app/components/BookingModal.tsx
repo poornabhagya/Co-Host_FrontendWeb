@@ -5,10 +5,10 @@ import "react-datepicker/dist/react-datepicker.css";
 import emailjs from "@emailjs/browser";
 
 const properties = [
-  "Luna Laguna - Kalpitiya", "Lakeside Retreat - Malsiripura", "Margossa Residence - Kandy", 
+  "Lakeside Retreat - Malsiripura", "Margossa Residence - Kandy", 
   "Casa Heliconia - Kaleliya", "Villa Morawala - Negombo", "Camellia Residencies - Colombo", "SinhaGiri Mansion - Nuwara Eliya", 
-  "Villa Vista - Haputale", "Boutique 87 - Bentota", "Sihina - Kosgoda", "Camellia Ranch - Baddegama", 
-  "Treasure Rock - Kirinda", "Liv - Unawatuna", "Lotus & Moon - Habaraduwa", "Heuvel Villa - Kandy"
+  "Boutique 87 - Bentota", "Sihina - Kosgoda", "Camellia Ranch - Baddegama", 
+  "Liv - Unawatuna", "Lotus & Moon - Habaraduwa", "Heuvel Villa - Kandy"
 ];
 
 export function BookingModal() {
